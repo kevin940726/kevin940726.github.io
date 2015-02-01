@@ -1,4 +1,5 @@
-$("document").ready(function() {
+$('document').ready(function() {
+
 	$('.arrow-wrap').click(function() {
 		if ($('html, body').scrollTop() < 100) {
 			$('html, body').animate( {
@@ -10,17 +11,15 @@ $("document").ready(function() {
 				scrollTop: $(".bg-wrapper").offset().top
 			}, 500);
 		}
+		this.hash.slice(1);
 	});
 
-	$('.home').click(function() {
-		$('html, body').animate( {
-			scrollTop: $(".bg-wrapper").offset().top
+	$('a[href^="#"]').click(function() {
+		$("html, body").animate({
+			scrollTop: $(this.hash).offset().top
 		}, 500);
+		return false;
+		e.preventDefault();
 	});
 
-	$('.about').click(function() {
-		$('html, body').animate( {
-			scrollTop: $(".content").offset().top
-		}, 500);
-	});
 });
