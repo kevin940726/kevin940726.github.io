@@ -11,7 +11,8 @@ $('document').ready(function() {
 				scrollTop: $(".bg-wrapper").offset().top
 			}, 500);
 		}
-		this.hash.slice(1);
+		return false;
+		e.preventDefault();
 	});
 
 	$('a[href^="#"]').click(function() {
@@ -22,4 +23,8 @@ $('document').ready(function() {
 		e.preventDefault();
 	});
 
+	var currentScroll = $('html, body').scrollTop()
+	if (currentScroll >= 100 && currentScroll >= $('#about').offset().top < currentScroll < $('#contact').offset().top) {
+		$('.about').addClass("active");
+	}
 });
