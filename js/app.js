@@ -23,8 +23,4 @@ $('document').ready(function() {
 		e.preventDefault();
 	});
 
-	var currentScroll = $('html, body').scrollTop()
-	if (currentScroll >= 100 && currentScroll >= $('#about').offset().top < currentScroll < $('#contact').offset().top) {
-		$('.about').addClass("active");
-	}
 });
