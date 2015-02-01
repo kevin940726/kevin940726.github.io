@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "OpenSans";
+  font-weight: normal;
+  src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-weight: bold;
+  src: url('../fonts/OpenSans-Bold.ttf');
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-wrapper {
+  height: 50%;
+  width: 100%;
+}
+
+.bg {
+  background-image: url('../img/ntu.jpg');
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+/* Overwrite bootstrap */
+.navbar {
+  border: transparent;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+  background-color: transparent;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: transparent;
+}
+
+.navbar .navbar-nav{
+  display: inline-block;
+  float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+/* End */
+
+.navbar a {
+  font-family: 'OpenSans';
+  text-align: center;
+  font-size: 20px;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+  transition: border-bottom-color 0.5s;
+  margin-right: 20px;
+}
+
+.navbar a:hover {
+  border-bottom: 3px solid;
+}
+
+.navbar a .active {
+  border-bottom: 3px solid;
+}
+
+.footer {
+  position: fixed;
+  bottom: 1%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'OpenSans';
+  color: black;
+  text-shadow: 2px 2px 4px white;
+}
+
+.footer a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+.arrow-fixed {
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  right: 50%;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+  transfrom-origin: right;
+}
+
+@keyframes bounce {
+  0%  {transform: translateY(0px)}
+  12.5% {transform: translateY(-20px)}
+  25% {transform: translateY(20px)}
+  37.5% {transform: translateY(0px)}
+  45%  {transform: translateY(10px)}
+  50%  {transform: translateY(0px)}
+  100%  {transform: translateY(0px)}
+}
+
+.arrow-fixed:hover {
+  opacity: 1;
+  
+}
+
+/* the wrapper element that will become the outer circle */
+.arrow-wrap {
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:-5em;
+  margin-left:-5em;
+  background:#111;
+  width:10em;
+  height:10em;
+  padding:4em 2em;
+  border-radius:50%;
+  font-size:0.5em;
+  display:block;
+  box-shadow:0px 0px 5px 0px #333;
+}
+
+.arrow-wrap:hover {
+  animation: bounce 2s linear 1s infinite;
+}
+
+/* a triangle to make the main part of the arrow. Adjust the border-color to fit your needs */
+.arrow {
+  float:left;
+  position:relative;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 3em 3em 0 3em;
+  border-color: #ffffff transparent transparent transparent;
+  -webkit-transform:rotate(360deg);/* added for better anti-aliasing on webkit browsers */
+}
+
+/* a pseudo element arrow placed on top of the other one with the same color as the wrapper */
+.arrow:after {
+  content:'';
+  position:absolute;
+  top:-3.2em;
+  left:-3em;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 3em 3em 0 3em;
+  border-color: #111 transparent transparent transparent;
+  -webkit-transform:rotate(360deg);/* added for better anti-aliasing on webkit browsers */
+}
+
+.content {
+  font-family: 'OpenSans';
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(248, 248, 248, 0.5);
+}
+
+.img-wrap{
+  height: 200px;
+  width: 200px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-image: url('../img/kai.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+  border-radius: 50%;
+  transition: background-size 0.5s ease;
+}
+
+.img-wrap:hover {
+  background-size: 115% auto;
+}
+
+
+.content p {
+  text-indent: 4em;
+}
