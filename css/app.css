@@ -21,7 +21,7 @@ a, a:active, a:focus {
 }
 
 .bg-wrapper {
-  height: 50%;
+  height: 100vh;
   width: 100%;
 }
 
@@ -30,9 +30,9 @@ a, a:active, a:focus {
   opacity: 0.5;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
   background-attachment: fixed;
-  height: 100%;
+  background-size: 100% auto;
+  height: 100vh;
   width: 100%;
 }
 
