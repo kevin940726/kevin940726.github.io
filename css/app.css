@@ -23,6 +23,7 @@ a, a:active, a:focus {
 .bg-wrapper {
   height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 
 .bg {
@@ -31,8 +32,8 @@ a, a:active, a:focus {
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-  background-size: 100% auto;
-  height: 100vh;
+  background-size: cover;
+  height: 100%;
   width: 100%;
 }
 
