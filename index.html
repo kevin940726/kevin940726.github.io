@@ -1,108 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 
-    <title>Kai Hao</title>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Kai Hao</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-  </head>
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body data-spy="scroll" data-target=".navbar">
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
 
-  <div class="skrollr-body">
-    <div id="home"></div>
-    <nav class="navbar navbar-default navbar-fixed-top"
-      data-0="background-color: rgba(248, 248, 248, 0);"
-      data-100="background-color: rgba(248, 248, 248, 0.9);">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#home" data-0="color: rgba(255, 255, 255, 1); text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);" data-100="color: rgba(0, 0, 0, 1); text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);"><strong>Kai Hao</strong></a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="#home" data-0="color: rgba(255, 255, 255, 1); text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);" data-100="color: rgba(0, 0, 0, 1); text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);">Home </a></li>
-            <li><a href="#about" data-0="color: rgba(255, 255, 255, 1); text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);" data-100="color: rgba(0, 0, 0, 1); text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);">About </a></li>
-            <li><a href="#contact" data-0="color: rgba(255, 255, 255, 1); text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);" data-100="color: rgba(0, 0, 0, 1); text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);">Contact </a></li>
-          </ul>
-        </div>
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <link rel="stylesheet" href="css/app.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+  <nav class="container navbar-list">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <div id="menuCircle" href="#">MENU</div>
+  
+  <div class="cover">
+    <h2 class="coverTitle" data-100="opacity: 1;" data-150="opacity: 0;"><span class="desktop">Work it <b>Harder</b>, Make it <b>Better</b>,<br></br>Do it <b>Faster</b>, Makes us <b>Stronger</b>.</span><span class="mobile">Harder, Better, Faster, Stronger.</span></h2>
+  </div>
+  
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">  
+
+    <div class="row">
+      <div id="about" class="one-half column" style="margin-top: 25%">
+        <h4>About</h4>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a.</p>
       </div>
-    </nav>
-
-    <div class="bg-wrapper">
-      <div class="bg"
-        data-anchor-target=".bg-wrapper"
-        data-0="background-position: 50% 0px"
-        data-700="background-position: 50% -100px"></div>
     </div>
 
-    <div class="arrow-fixed" 
-      data-0="transform: rotate(0deg); right: 50%"
-      data-100="transform: rotate(180deg); right: -40%">
-        <a href="#" class="arrow-wrap"><span class="arrow" aria-hidden="true"></span></a>
+    <div id="contact" style="height:1000px">
+      <h4>Contact</h4>
+      <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan.</p>
     </div>
+    
   </div>
 
-    <div id="about">
-      <div class="content">
-        <h1><strong>About Me</strong></h1>
-        <br></br>
-        <div class="img-wrap"></div>
-        <h2>Kai Hao</h2>
-        <br></br>
-        <div class="about-wrap">
-          <p class="lead text-justify"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 郝晉凱</p>
-          <p class="lead text-justify"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> 1994/07/26</p>
-          <p class="lead text-justify"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Taipei, Taiwan</p>
-          <p class="lead text-justify"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Junior of NTUIM</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="contact">
-      <div class="content">
-        <h1><strong>Contact Me</strong></h1>
-        <br></br>
-        <div class="row">
-          <a href="http://github.com/kevin940726/"><div class="col-md-6">
-            <div id="github" class="contact-link"></div>
-            <h2>GitHub</h2>
-          </div></a>
-          <a href="http://facebook.com/kevin940726/"><div class="col-md-6">
-            <div id="facebook" class="contact-link"></div>
-            <h2>Facebook</h2>
-          </div></a>
-        </div>
-        <div class="row" id="mail">
-            <div class="col-md-4 vcenter"><a href="mailto:b01705041@ntu.edu.tw"><h4>b01705041@ntu.edu.tw</h4></a></div>
-            <div class="col-md-3 vcenter">
-              <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>
-              <h2>Mail</h2>
-            </div>
-            <div class="col-md-4 vcenter"><a href="mailto:kevin830726@gmail.com"><h4>kevin830726@gmail.com</h4></a></div>
-          </div>
-      </div>
-    </div>
-
-    <div class="footer">
-        <p>Kai Hao <a href="http://github.com/kevin940726">GitHub</a>, <a href="https://facebook.com/kevin940726">Facebook</a>.</p>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/skrollr.min.js"></script>
-    <script src="js/app.js"></script>
-    <script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/skrollr.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    window.onload = function() {
       var s = skrollr.init();
-    </script>
-  </body>
+      if (s.isMobile()){
+        s.destroy();
+      }
+    }
+  </script>
+</body>
 </html>
