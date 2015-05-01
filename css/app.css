@@ -10,6 +10,25 @@ body{
 	height: 100vh;
 	width: 100%;
 	background-color: gray;
+	overflow: hidden;
+}
+
+.wrapper{
+	height: 100%;
+	width: 100%;
+}
+
+.coverImg{
+	background-image: url("../images/coverImg.jpg");
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	/*-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);*/
 }
 
 .coverTitle{
@@ -17,6 +36,7 @@ body{
 	position: absolute;
 	top: 40vh;
 	text-align: center;
+	text-shadow: 10px 10px 20px #FFFFFF;
 	left: 0;
 	right: 0;
 }
@@ -57,6 +77,7 @@ body{
 }
 
 @media (min-width: 1200px){
+
 	.coverCircle{
 		position: fixed;
 	}
@@ -132,16 +153,16 @@ body{
 	bottom: 10%;
 	position: fixed;
 	z-index: 2;
-	height: 40px;
-	width: 40px;
+	height: 60px;
+	width: 60px;
 	border-radius: 50%;
 	background-color: rgba(0,0,0,0.6);
 	border: 2px solid rgba(255,255,255,0.9);
 	box-shadow: 0 0 0 2px rgba(0,0,0,0.8);
 	color: white;
 	text-align: center;
-	font-size: 80%;
-	line-height: 40px;
+	font-size: 100%;
+	line-height: 60px;
 }
 
 p{
