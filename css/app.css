@@ -9,7 +9,7 @@ body{
 .cover{
 	height: 100vh;
 	width: 100%;
-	background-color: gray;
+	background-color: rgba(0,0,0,0.2);
 	overflow: hidden;
 }
 
@@ -24,6 +24,8 @@ body{
 	height: 100%;
 	width: 100%;
 	background-size: cover;
+	display: none;
+
 	/*-webkit-filter: blur(2px);
 	-moz-filter: blur(2px);
 	-o-filter: blur(2px);
@@ -62,7 +64,7 @@ body{
 }
 
 .mobile{
-	display: inline;
+	display: block;
 }
 
 .arrow{
@@ -96,20 +98,6 @@ body{
 	}
 }
 
-@media (min-width: 700px){
-	.coverTitle{
-		top: 25vh;
-	}
-
-	.mobile{
-		display: none;
-	}
-
-	.desktop{
-		display: inline;
-	}
-}
-
 .navbar{
 	margin: 0;
 	min-width: 100%;
@@ -134,13 +122,18 @@ body{
 
 .navbar ul{
 	list-style: none;	
-	margin-left: 100px;
+	margin-left: 5%;
 }
 
 .navbar li{
 	margin: 20px;
 	position: relative;
   	float: left;
+}
+
+.navbar .right{
+	position: relative;
+	float: right;
 }
 
 .navbar li a{
@@ -167,4 +160,82 @@ body{
 
 p{
 	text-align: justify;
+}
+
+#about img{
+	height: 200px;
+	width: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 50px;
+}
+
+#skills h5{
+	margin-bottom: 0;
+}
+
+#skills h6{
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+	text-align: center;
+	display: inline;
+}
+
+#skills .desktop{
+	display: none;
+}
+
+#skills .mobile{
+	float:right;
+	display: inline;
+	height: auto;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.progress > p{
+	text-align: center;
+	transition: font-size 0.5s ease-in-out;
+}
+
+.progress:hover > p{
+	font-size: 17px;
+}
+
+@media (min-width: 700px){
+	.navbar ul{
+		margin-left: 10%;
+	}
+
+	.coverTitle{
+		top: 25vh;
+	}
+
+	.mobile{
+		display: none;
+	}
+
+	.desktop{
+		display: block;
+	}
+}
+
+@media (min-width: 550px){
+	#skills h6{
+		display: block;
+	}
+
+	#skills .mobile{
+		display: none;
+	}
+
+	#skills .desktop{
+		display: block;
+		height: 80px;
+		width: 80px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
