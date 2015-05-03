@@ -4,6 +4,7 @@ html{
 body{
 	max-width: 100%;
 	min-height: 100%;
+	background-color: rgba(254,254,254,1);
 }
 
 .cover{
@@ -33,6 +34,47 @@ body{
 	filter: blur(2px);*/
 }
 
+@-webkit-keyframes dropdown {
+  	0%{ 
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+  	100%{
+  		transform: translateY(0px);
+  		opacity: 1;
+  	}
+}
+@-moz-keyframes dropdown {
+	0%{ 
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+  	100%{
+  		transform: translateY(0px);
+  		opacity: 1;
+  	}
+}
+@-o-keyframes dropdown {
+	0%{ 
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+  	100%{
+  		transform: translateY(0px);
+  		opacity: 1;
+  	}
+}
+@keyframes dropdown {
+	0%{ 
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+  	100%{
+  		transform: translateY(0px);
+  		opacity: 1;
+  	}
+}
+
 .coverTitle{
 	font-family: 'Tangerine', cursive;
 	position: absolute;
@@ -41,6 +83,11 @@ body{
 	text-shadow: 10px 10px 20px #FFFFFF;
 	left: 0;
 	right: 0;
+
+	-webkit-animation: dropdown 1.5s ease-in-out;
+	-moz-animation: dropdown 1.5s ease-in-out;
+	-o-animation: dropdown 1.5s ease-in-out;
+	animation: dropdown 1.5s ease-in-out;
 }
 
 .coverCircle{
@@ -141,6 +188,7 @@ body{
 	color: white;
 }
 
+
 #menuCircle{
 	right: 0;
 	bottom: 10%;
@@ -162,13 +210,37 @@ p{
 	text-align: justify;
 }
 
-#about img{
+.section{
+	padding-top: 50px;
+}
+
+#space{
+	height: 100px;
+}
+
+#about .imgWrapper{
 	height: 200px;
-	width: auto;
-	display: block;
+	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
-	border-radius: 50px;
+	padding: 5px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background-image: url("../images/kai.png");
+	background-position: center center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-origin: content-box;
+	overflow: hidden;
+	transition: box-shadow 0.5s ease-in-out, background-size 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+}
+
+#about .imgWrapper:hover{
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+	background-size: 105% auto;
+	border-radius: 50%;
 }
 
 #skills h5{
@@ -180,6 +252,25 @@ p{
 	margin-bottom: 0.5rem;
 	text-align: center;
 	display: inline;
+}
+
+#skills a{
+	text-decoration: none;
+	color: black;
+}
+
+[contenteditable="true"].single-line {
+    white-space: nowrap;
+    width:200px;
+    overflow: hidden;
+} 
+[contenteditable="true"].single-line br {
+    display:none;
+
+}
+[contenteditable="true"].single-line * {
+    display:inline;
+    white-space:nowrap;
 }
 
 #skills .desktop{
@@ -204,6 +295,52 @@ p{
 	font-size: 17px;
 }
 
+#contact{
+	margin-top: 100px;
+	width: 100%;
+	color: white;
+	background-color: #1C2228;
+}
+
+#contact input{
+	color: #789092;
+}
+
+#contact textarea{
+	color: #789092;
+	height: auto;
+}
+
+#contact .button{
+	width: 100%;
+}
+
+#contact ul{
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	list-style: none;
+	display: table;
+}
+
+#contact ul li{
+	display: inline;
+	margin: 7px;
+}
+
+#contact ul li a{
+	text-decoration: none;
+	color: rgb(255,255,255);
+}
+
+#contact ul li a > svg path{
+	transition: fill 0.5s ease-in-out;
+}
+
+#contact ul li a:hover > svg path{
+	fill: #FFFFFF;
+}
+
 @media (min-width: 700px){
 	.navbar ul{
 		margin-left: 10%;
@@ -219,6 +356,11 @@ p{
 
 	.desktop{
 		display: block;
+	}
+
+	#contact .button{
+		float: right;
+		width: auto;
 	}
 }
 

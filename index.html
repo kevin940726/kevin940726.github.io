@@ -79,13 +79,15 @@
   
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div id="primary" class="container" style="padding-top: 20%">  
+  <div id="primary" class="container">  
 
-    <div id="about" class="row" >
-      <div class="one-half column">
+    <div id="space"></div>
+
+    <div id="about" class="row section">
+      <div class="one-half column">  
         <h4>About</h4>
-        <!-- <img src="images/kai.png"/> -->
-        <p>I am a Junior student of NTU in Taiwan. I love learning new things, and I am also a good learner.</p>
+        <div class="imgWrapper"></div>
+        <p>I am Kai Hao, a junior student of NTU in Taiwan. I love learning new things, and I am also a good learner.</p>
         <p>I am interested in Web development and mobile application the most, but I like to try other things as well.</p>
       </div>
       <div id="skills" class="one-half column">
@@ -141,17 +143,89 @@
             <div class="progress mobile" id="progressMobile_humor"></div>
           </div>
         </div>
+        
+        <div class="row">
+          <h6><a contenteditable="true" class="single-line">Name the skill</a> <font face="Symbol">+</font></h6>
+          <div class="progress desktop" id="progress_new"></div>
+          <div class="progress mobile" id="progressMobile_new"></div>
+        </div>
 
       </div>
       
     </div>
-
-    <div id="contact" style="height:1000px">
-      <h4>Contact</h4>
-      <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan.</p>
-    </div>
     
   </div>
+
+  <footer id="contact" class="section">
+    <div class="container">
+      <h4>Contact</h4>
+
+      <form action="mailto:kevin830726@gmail.com" method="GET">
+        <fieldset>
+        <div class="row">
+          <div class="six columns">
+            <label for="nameImput">Your name</label>
+            <input class="u-full-width" type="text" placeholder="Steve Jobs" id="nameInput">
+          </div>
+          <div class="six columns">
+            <label for="subject">Subject</label>
+            <input name="subject" class="u-full-width" type="text" placeholder="How about hang out sometimes ?" id="subject" required>
+          </div>
+        </div>
+        <label for="message">Message</label>
+        <textarea name="body" class="u-full-width" placeholder="Hi Kai, let's hang out and have fun sometimes !" id="message" rows="5"></textarea>
+        
+        <input class="button" type="submit" value="SEND">
+        </fieldset>
+      </form>
+
+      <ul class="icons">
+        <li><a href="https://github.com/kevin940726" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
+          <path fill="#8F9193" d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM25.502 25.502c-1.235 1.235-2.672 2.204-4.272 2.881-0.406 0.172-0.819 0.323-1.238 0.453v-2.398c0-1.26-0.432-2.188-1.297-2.781 0.542-0.052 1.039-0.125 1.492-0.219s0.932-0.229 1.438-0.406 0.958-0.388 1.359-0.633 0.786-0.563 1.156-0.953 0.68-0.833 0.93-1.328 0.448-1.089 0.594-1.781 0.219-1.456 0.219-2.289c0-1.615-0.526-2.99-1.578-4.125 0.479-1.25 0.427-2.609-0.156-4.078l-0.391-0.047c-0.271-0.031-0.758 0.083-1.461 0.344s-1.492 0.688-2.367 1.281c-1.24-0.344-2.526-0.516-3.859-0.516-1.344 0-2.625 0.172-3.844 0.516-0.552-0.375-1.075-0.685-1.57-0.93s-0.891-0.411-1.188-0.5-0.573-0.143-0.828-0.164-0.419-0.026-0.492-0.016-0.125 0.021-0.156 0.031c-0.583 1.479-0.635 2.839-0.156 4.078-1.052 1.135-1.578 2.51-1.578 4.125 0 0.833 0.073 1.596 0.219 2.289s0.344 1.286 0.594 1.781 0.56 0.938 0.93 1.328 0.755 0.708 1.156 0.953 0.854 0.456 1.359 0.633 0.984 0.313 1.438 0.406 0.95 0.167 1.492 0.219c-0.854 0.583-1.281 1.51-1.281 2.781v2.445c-0.472-0.14-0.937-0.306-1.394-0.5-1.6-0.677-3.037-1.646-4.272-2.881s-2.204-2.672-2.881-4.272c-0.7-1.655-1.055-3.414-1.055-5.23s0.355-3.575 1.055-5.23c0.677-1.6 1.646-3.037 2.881-4.272s2.672-2.204 4.272-2.881c1.655-0.7 3.415-1.055 5.23-1.055s3.575 0.355 5.23 1.055c1.6 0.677 3.037 1.646 4.272 2.881s2.204 2.672 2.881 4.272c0.7 1.655 1.055 3.415 1.055 5.23s-0.355 3.575-1.055 5.23c-0.677 1.6-1.646 3.037-2.881 4.272z"></path>
+          </svg>
+        </a></li>
+        <li><a href="https://fb.me/kevin940726" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="3 3 32 32">
+          <path fill="#8F9193" d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path>
+          </svg>
+        </a></li>
+        <li><a href="mailto:kevin830726@gmail.com">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
+          <path fill="#8F9193" d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM8 8h16c0.286 0 0.563 0.061 0.817 0.177l-8.817 10.286-8.817-10.287c0.254-0.116 0.531-0.177 0.817-0.177zM6 22v-12c0-0.042 0.002-0.084 0.004-0.125l5.864 6.842-5.8 5.8c-0.045-0.167-0.069-0.34-0.069-0.517zM24 24h-16c-0.177 0-0.35-0.024-0.517-0.069l5.691-5.691 2.826 3.297 2.826-3.297 5.691 5.691c-0.167 0.045-0.34 0.069-0.517 0.069zM26 22c0 0.177-0.024 0.35-0.069 0.517l-5.8-5.8 5.865-6.842c0.003 0.041 0.004 0.083 0.004 0.125v12z"></path>
+          </svg>
+        </a></li>  
+        <li><a href="https://plus.google.com/u/0/110512695216926012188/posts" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 -1 32 32">
+          <path fill="#8F9193" d="M17.471 2c0 0-6.28 0-8.373 0-3.754 0-7.287 2.844-7.287 6.138 0 3.366 2.559 6.083 6.378 6.083 0.266 0 0.524-0.005 0.776-0.024-0.248 0.475-0.425 1.009-0.425 1.564 0 0.936 0.503 1.694 1.14 2.313-0.481 0-0.945 0.014-1.452 0.014-4.649-0-8.228 2.961-8.228 6.032 0 3.024 3.923 4.916 8.573 4.916 5.301 0 8.228-3.008 8.228-6.032 0-2.425-0.715-3.877-2.928-5.442-0.757-0.536-2.204-1.839-2.204-2.604 0-0.897 0.256-1.34 1.607-2.395 1.385-1.082 2.365-2.603 2.365-4.372 0-2.106-0.938-4.159-2.699-4.837h2.655l1.874-1.355zM14.546 22.483c0.066 0.28 0.103 0.569 0.103 0.863 0 2.444-1.575 4.353-6.093 4.353-3.214 0-5.535-2.035-5.535-4.478 0-2.395 2.879-4.389 6.093-4.354 0.75 0.008 1.449 0.129 2.083 0.334 1.745 1.213 2.996 1.899 3.349 3.281zM9.401 13.368c-2.157-0.065-4.207-2.413-4.58-5.246s1.074-5.001 3.231-4.937c2.157 0.065 4.207 2.338 4.58 5.171s-1.075 5.077-3.231 5.012zM26 8v-6h-2v6h-6v2h6v6h2v-6h6v-2z"></path>
+          </svg>
+        </a></li>
+        <li><a href="https://soundcloud.com/kevin940726" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
+          <path fill="#8F9193" d="M27.874 16.069c-0.565 0-1.105 0.11-1.596 0.308-0.328-3.574-3.447-6.377-7.25-6.377-0.931 0-1.834 0.176-2.635 0.474-0.311 0.116-0.393 0.235-0.393 0.466v12.585c0 0.243 0.195 0.445 0.441 0.469 0.011 0.001 11.36 0.007 11.434 0.007 2.278 0 4.125-1.776 4.125-3.965s-1.848-3.966-4.126-3.966zM12.5 24h1l0.5-7.007-0.5-6.993h-1l-0.5 6.993zM9.5 24h-1l-0.5-5.086 0.5-4.914h1l0.5 5zM4.5 24h1l0.5-4-0.5-4h-1l-0.5 4zM0.5 22h1l0.5-2-0.5-2h-1l-0.5 2z"></path>
+          </svg>
+        </a></li>
+        <li><a href="https://twitter.com/kevin940726" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
+          <path fill="#8F9193" d="M32 6.076c-1.177 0.522-2.443 0.875-3.771 1.034 1.355-0.813 2.396-2.099 2.887-3.632-1.269 0.752-2.674 1.299-4.169 1.593-1.198-1.276-2.904-2.073-4.792-2.073-3.626 0-6.565 2.939-6.565 6.565 0 0.515 0.058 1.016 0.17 1.496-5.456-0.274-10.294-2.888-13.532-6.86-0.565 0.97-0.889 2.097-0.889 3.301 0 2.278 1.159 4.287 2.921 5.465-1.076-0.034-2.088-0.329-2.974-0.821-0.001 0.027-0.001 0.055-0.001 0.083 0 3.181 2.263 5.834 5.266 6.437-0.551 0.15-1.131 0.23-1.73 0.23-0.423 0-0.834-0.041-1.235-0.118 0.835 2.608 3.26 4.506 6.133 4.559-2.247 1.761-5.078 2.81-8.154 2.81-0.53 0-1.052-0.031-1.566-0.092 2.905 1.863 6.356 2.95 10.064 2.95 12.076 0 18.679-10.004 18.679-18.68 0-0.285-0.006-0.568-0.019-0.849 1.283-0.926 2.396-2.082 3.276-3.398z"></path>
+          </svg>
+        </a></li>
+        <li><a href="https://www.youtube.com/channel/UCp9N6FdCzTyQZKMOZEz2Kjw" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
+          <path fill="#8F9193" d="M26 4h-20c-3.3 0-6 2.7-6 6v12c0 3.3 2.7 6 6 6h20c3.3 0 6-2.7 6-6v-12c0-3.3-2.7-6-6-6zM12 24v-16l10 8-10 8z"></path>
+          </svg>
+        </a></li>
+        <li><a href="http://www.twitch.tv/kevin940726" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="-2 -2 32 32">
+          <path fill="#8F9193" d="M3 0l-3 5v23h8v4h4l4-4h5l9-9v-19h-27zM26 17l-5 5h-5l-4 4v-4h-6v-18h20v13z"></path>
+          <path fill="#8F9193" d="M19 8h3v8h-3v-8z"></path>
+          <path fill="#8F9193" d="M13 8h3v8h-3v-8z"></path>
+          </svg>
+        </a></li>
+
+      </ul>
+    </div>  
+  </footer>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

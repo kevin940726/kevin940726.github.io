@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var topset = false;
-	$('.coverImg').fadeIn(1000);
+	$('.coverImg').fadeIn(2000);
 
 	$('#menuCircle').draggable({
 		containment: "body",
@@ -62,10 +62,9 @@ $(document).ready(function() {
 	// });
 	$('.navbar a').click(function(event) {
 		if (!$(this).parent().hasClass("right")){
-			console.log("no");
 			event.preventDefault();
 			$('html, body').stop().animate( {
-				scrollTop: $($(this).attr('href')).offset().top-80
+				scrollTop: $($(this).attr('href')).offset().top-50
 			}, 500);
 		}
 	});
@@ -78,7 +77,7 @@ $(document).ready(function() {
 		}
 		else{
 			$('html, body').stop().animate( {
-				scrollTop: $('#about').offset().top-80
+				scrollTop: $('#about').offset().top-50
 			}, 500);
 		}
 	});
@@ -107,26 +106,40 @@ $(document).ready(function() {
 	});
 	
 
-	var humor = progresses[Object.keys(progresses)[Object.keys(progresses).length-1]];
-	var increment = true;
-	$('#skills .column:last-child').click(function() {
-		if (humor.progressVar.value() >= 1){
-			increment = false;
+	var humor = progresses[Object.keys(progresses)[Object.keys(progresses).length-2]];
+	$('#progress_humor').parent().hover(
+		function() {
+			humor.progressVar.animate(1, {
+				from: {color: "#800080", width: 5},
+				to: {color: "#FF0000", width: 7}
+			});
+			humor.progressMobileVar.animate(1);
+		}, function() {
+			humor.progressVar.animate(0.9);
+			humor.progressMobileVar.animate(0.9);
 		}
-		else if (humor.progressVar.value() <= 0.8){
-			increment = true;
-		}
+	);
 
-		if (increment){
-			humor.progressVar.set(humor.progressVar.value()+0.01);
-			humor.progressMobileVar.set(humor.progressVar.value()+0.01);		
-		}
-		else{
-			humor.progressVar.set(humor.progressVar.value()-0.01);	
-			humor.progressMobileVar.set(humor.progressVar.value()-0.01);
+	var progress_new = progresses[Object.keys(progresses)[Object.keys(progresses).length-1]];
+	$('.single-line').keydown(function(e) {
+		if (e.which == 13){
+			var max = Math.random().toFixed(2);
+			progress_new.progressVar.animate(max);
+			progress_new.progressMobileVar.animate(max);
 		}
 	});
+	$('#progress_new').parent().click(function() {
+		var max = Math.random().toFixed(2);
+		progress_new.progressVar.animate(max);
+		progress_new.progressMobileVar.animate(max);
+	});
 
+	$('form').submit(function(event) {
+		event.preventDefault();
+		var message = $('#message').val() + "\r\n\r\n" + "Sincerely " + $('#nameInput').val() ;
+		var mailurl = "mailto:kevin830726@gmail.com?subject="+encodeURIComponent($('#subject').val())+"&body="+encodeURIComponent(message);
+		window.location.href = mailurl;
+	})
 
 });
 
@@ -152,26 +165,7 @@ var progressAttr = function(color, width) {
 		}
 	}
     return attr;
-}
-
-var progressAttrMobile = function(color) {
-	var attr ={
-		color: '#aaa',
-		strokeWidth: 5,
-		trailWidth: 1,
-		easing: 'easeOutCirc',
-		duration: 1500,
-
-		from: { color: '#aaa', width: 1 },
-		to: { color: color, width: 7 },
-		// Set default step function for all animate calls
-		step: function(state, circle) {
-		    circle.path.setAttribute('stroke', state.color);
-		    circle.path.setAttribute('stroke-width', state.width);
-		}
-	}
-	return attr;
-}
+};
 
 var progresses = [
 	{
@@ -237,13 +231,20 @@ var progresses = [
 		progressMobileDOM: $('#progressMobile_humor'),
 		max: '0.9'
 	},
+	{
+		progressVar: new ProgressBar.Circle('#progress_new', progressAttr("#800080")),
+		progressDOM: $('#progress_new'),
+		progressMobileVar: new ProgressBar.Line('#progressMobile_new', progressAttr("#800080", 1)),
+		progressMobileDOM: $('#progressMobile_new'),
+		max: '0'
+	}
 ]
 
 var delayAni = function(progressVar, progressDOM, max){
-	if ($(window).scrollTop() >= progressDOM.offset().top-2*$(window).height()/3 && progressVar.value() == 0){
+	if ($(window).scrollTop() >= progressDOM.offset().top-3*$(window).height()/4 && progressVar.value() == 0){
 		progressVar.animate(max);
 	}
-	else if ($(window).scrollTop() < progressDOM.offset().top-$(window).height() && progressVar.value() == max){
+	else if ($(window).scrollTop() < progressDOM.offset().top-$(window).height()){
 		progressVar.set(0);
 	}
 }
