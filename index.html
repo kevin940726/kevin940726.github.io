@@ -33,13 +33,14 @@
 </head>
 <body>
 
-  <!--<nav class="container navbar-list">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>-->
-  
+  <div class="loading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
   <div id="menuCircle" class="mobile" href="#">TOP</div>
   
   <div class="cover">
@@ -153,8 +154,21 @@
       </div>
       
     </div>
-    
+
   </div>
+
+  <!-- <div id="portfolio" class="section">
+    <div class="garage" data-smooth-scrolling="off" data-anchor="#portfolio" data-center="transform: translateY(0px);" data--500-center="transform: translateY(500px);">
+      <h4 class="container">Portfolio</h4>
+      <br></br>
+      <div class="container garage-container" data-center="transform: translateX(30%);" data-top-center="transform: translateX(-50%);">
+        <div class="img-wrapper"></div>
+        <div class="img-wrapper" id="imdb2"></div>
+        <div class="img-wrapper" id=""></div>
+        <div class="img-wrapper"></div>
+      </div>
+    </div>
+  </div> -->
 
   <footer id="contact" class="section">
     <div class="container">
@@ -175,7 +189,7 @@
         <label for="message">Message</label>
         <textarea name="body" class="u-full-width" placeholder="Hi Kai, let's hang out and have fun sometimes !" id="message" rows="5"></textarea>
         
-        <input class="button" type="submit" value="SEND">
+        <input class="button" type="submit" value="SEND BY EMAIL">
         </fieldset>
       </form>
 
@@ -194,6 +208,11 @@
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
           <path fill="#8F9193" d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM8 8h16c0.286 0 0.563 0.061 0.817 0.177l-8.817 10.286-8.817-10.287c0.254-0.116 0.531-0.177 0.817-0.177zM6 22v-12c0-0.042 0.002-0.084 0.004-0.125l5.864 6.842-5.8 5.8c-0.045-0.167-0.069-0.34-0.069-0.517zM24 24h-16c-0.177 0-0.35-0.024-0.517-0.069l5.691-5.691 2.826 3.297 2.826-3.297 5.691 5.691c-0.167 0.045-0.34 0.069-0.517 0.069zM26 22c0 0.177-0.024 0.35-0.069 0.517l-5.8-5.8 5.865-6.842c0.003 0.041 0.004 0.083 0.004 0.125v12z"></path>
           </svg>
+        </a></li> 
+        <li><a href="https://kai-hao.blogspot.com/" target="_blank">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
+          <path fill="#8F9193" d="M29.931 12h-1.794c-1.099 0-2.062-0.929-2.137-2v0c0-5.708-4.602-10-10.35-10h-5.245c-5.744 0-10.402 4.625-10.406 10.333v11.337c0 5.708 4.662 10.329 10.406 10.329h11.201c5.748 0 10.394-4.621 10.394-10.329v-7.324c0-1.141-0.92-2.346-2.069-2.346zM10 8h6c1.1 0 2 0.9 2 2s-0.9 2-2 2h-6c-1.1 0-2-0.9-2-2s0.9-2 2-2zM22 24h-12c-1.1 0-2-0.9-2-2s0.9-2 2-2h12c1.1 0 2 0.9 2 2s-0.9 2-2 2z"></path>
+          </svg>
         </a></li>  
         <li><a href="https://plus.google.com/u/0/110512695216926012188/posts" target="_blank">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 -1 32 32">
@@ -205,21 +224,9 @@
           <path fill="#8F9193" d="M27.874 16.069c-0.565 0-1.105 0.11-1.596 0.308-0.328-3.574-3.447-6.377-7.25-6.377-0.931 0-1.834 0.176-2.635 0.474-0.311 0.116-0.393 0.235-0.393 0.466v12.585c0 0.243 0.195 0.445 0.441 0.469 0.011 0.001 11.36 0.007 11.434 0.007 2.278 0 4.125-1.776 4.125-3.965s-1.848-3.966-4.126-3.966zM12.5 24h1l0.5-7.007-0.5-6.993h-1l-0.5 6.993zM9.5 24h-1l-0.5-5.086 0.5-4.914h1l0.5 5zM4.5 24h1l0.5-4-0.5-4h-1l-0.5 4zM0.5 22h1l0.5-2-0.5-2h-1l-0.5 2z"></path>
           </svg>
         </a></li>
-        <li><a href="https://twitter.com/kevin940726" target="_blank">
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
-          <path fill="#8F9193" d="M32 6.076c-1.177 0.522-2.443 0.875-3.771 1.034 1.355-0.813 2.396-2.099 2.887-3.632-1.269 0.752-2.674 1.299-4.169 1.593-1.198-1.276-2.904-2.073-4.792-2.073-3.626 0-6.565 2.939-6.565 6.565 0 0.515 0.058 1.016 0.17 1.496-5.456-0.274-10.294-2.888-13.532-6.86-0.565 0.97-0.889 2.097-0.889 3.301 0 2.278 1.159 4.287 2.921 5.465-1.076-0.034-2.088-0.329-2.974-0.821-0.001 0.027-0.001 0.055-0.001 0.083 0 3.181 2.263 5.834 5.266 6.437-0.551 0.15-1.131 0.23-1.73 0.23-0.423 0-0.834-0.041-1.235-0.118 0.835 2.608 3.26 4.506 6.133 4.559-2.247 1.761-5.078 2.81-8.154 2.81-0.53 0-1.052-0.031-1.566-0.092 2.905 1.863 6.356 2.95 10.064 2.95 12.076 0 18.679-10.004 18.679-18.68 0-0.285-0.006-0.568-0.019-0.849 1.283-0.926 2.396-2.082 3.276-3.398z"></path>
-          </svg>
-        </a></li>
         <li><a href="https://www.youtube.com/channel/UCp9N6FdCzTyQZKMOZEz2Kjw" target="_blank">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 32 32">
           <path fill="#8F9193" d="M26 4h-20c-3.3 0-6 2.7-6 6v12c0 3.3 2.7 6 6 6h20c3.3 0 6-2.7 6-6v-12c0-3.3-2.7-6-6-6zM12 24v-16l10 8-10 8z"></path>
-          </svg>
-        </a></li>
-        <li><a href="http://www.twitch.tv/kevin940726" target="_blank">
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="-2 -2 32 32">
-          <path fill="#8F9193" d="M3 0l-3 5v23h8v4h4l4-4h5l9-9v-19h-27zM26 17l-5 5h-5l-4 4v-4h-6v-18h20v13z"></path>
-          <path fill="#8F9193" d="M19 8h3v8h-3v-8z"></path>
-          <path fill="#8F9193" d="M13 8h3v8h-3v-8z"></path>
           </svg>
         </a></li>
 
@@ -237,6 +244,7 @@
   <script src="js/app.js"></script>
   <script>
     window.onload = function() {
+      $('.loading').fadeOut('slow');
       var s = skrollr.init();
       if (s.isMobile()){
         s.destroy();

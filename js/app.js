@@ -16,13 +16,13 @@ $(document).ready(function() {
 				$(this).animate({
 					left: $(window).width()-$(this).width()-4,
 					easing: "easeInOutCubic"
-				}, 500);
+				}, 800);
 			}
 			else{
 				$(this).animate({
 					left: 0,
 					easing: "easeInOutCubic"
-				}, 500);
+				}, 800);
 			}
 			// if ($('.navbar').position().top != $(this).position().top && topset){
 			// 	$('.navbar').animate({
@@ -65,7 +65,7 @@ $(document).ready(function() {
 			event.preventDefault();
 			$('html, body').stop().animate( {
 				scrollTop: $($(this).attr('href')).offset().top-50
-			}, 500);
+			}, 800);
 		}
 	});
 	$('.coverCircle').click(function(event) {
@@ -78,7 +78,7 @@ $(document).ready(function() {
 		else{
 			$('html, body').stop().animate( {
 				scrollTop: $('#about').offset().top-50
-			}, 500);
+			}, 800);
 		}
 	});
 	var navbarTop = $('.navbar').offset().top;
@@ -248,7 +248,6 @@ var delayAni = function(progressVar, progressDOM, max){
 		progressVar.set(0);
 	}
 }
-
 
 
 
