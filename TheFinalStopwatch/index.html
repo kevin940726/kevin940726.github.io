@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Final Stopwatch</title>
+	<meta name="description" content="The Final Stopwatch">
+  	<meta name="author" content="Kai Hao">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style type="text/css">
+		@font-face {
+			font-family: 'digital7';
+			src: url('digital-7(mono).ttf');
+		}
+
+		a, h1 {
+			font-family: 'digital7';
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.wrapper-table {
+			display: table;
+		    position: absolute;
+		    height: 100%;
+		    width: 100%;
+		}
+
+		.wrapper-cell {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#countdown {
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+
+		#countdown .digit {
+			font-size: 15vw;
+		}
+
+		#countdown .btn{
+			font-size: 8vw;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="wrapper-table"><div class="wrapper-cell">
+		<div id="countdown">
+			<h1>The Final Stopwatch</h1>
+			<a href="#" onclick="toggle()"><h1 class="digit">
+				<span id="hour">00</span>
+				:
+				<span id="minute">00</span>
+				:
+				<span id="second">00</span>
+			</h1></a>
+			<a class="btn" href="#" onclick="toggle()">start/pause</a>
+			<a class="btn" href="#" onclick="stop()">stop</a>
+		</div>
+	</div></div>
+
+
+	<script>
+		var hour = 0;
+		var minute = 0;
+		var second = 0;
+		var count;
+		var counting = true;
+
+		function countdown() {
+			count = setInterval(function() {
+				second++;
+				if (second >= 60) {
+					second = 0;
+					minute++;
+				}
+				if (minute > 59) {
+					minute = 0;
+					hour++;
+				}
+
+				document.getElementById('second').innerHTML = second < 10 ? "0" + second : second;
+				document.getElementById('minute').innerHTML = minute < 10 ? "0" + minute : minute;
+				document.getElementById('hour').innerHTML = hour < 10 ? "0" + hour : hour;
+			}, 1000);
+		}
+
+		function start() {
+			if (!counting) {
+				counting = true;
+				countdown();	
+			}
+		}
+
+		function pause() {
+			clearInterval(count);
+			counting = false;
+		}
+
+		function stop() {
+			hour = 0;
+			minute = 0;
+			second = 0;
+			document.getElementById('second').innerHTML = "00";
+			document.getElementById('minute').innerHTML = "00";
+			document.getElementById('hour').innerHTML = "00";
+		}
+
+		function toggle() {
+			if (counting) {
+				pause();
+			}
+			else {
+				start();
+			}
+		}
+
+		window.onload = function(){
+			countdown();
+		};
+	</script>
+</body>
+</html>
