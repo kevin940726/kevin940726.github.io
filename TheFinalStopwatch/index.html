@@ -73,7 +73,7 @@
 				:
 				<span id="second">00</span>
 			</h1></a>
-			<a class="btn" href="#" onclick="toggle()">start/pause</a>
+			<a id="startpause" class="btn" href="#" onclick="toggle()"></a>
 			<a class="btn" href="#" onclick="stop()">stop</a>
 		</div>
 	</div></div>
@@ -107,13 +107,15 @@
 		function start() {
 			if (!counting) {
 				counting = true;
-				countdown();	
+				countdown();
+				document.getElementById('startpause').innerHTML = counting ? "PAUSE" : "START";
 			}
 		}
 
 		function pause() {
 			clearInterval(count);
 			counting = false;
+			document.getElementById('startpause').innerHTML = counting ? "PAUSE" : "START";
 		}
 
 		function stop() {
@@ -137,6 +139,7 @@
 
 		window.onload = function(){
 			countdown();
+			document.getElementById('startpause').innerHTML = counting ? "PAUSE" : "START";
 		};
 	</script>
 </body>
