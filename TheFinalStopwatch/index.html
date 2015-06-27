@@ -22,7 +22,7 @@
 			color: black;
 		}
 
-		.wrapper-table {
+		/*.wrapper-table {
 			display: table;
 		    position: absolute;
 		    height: 100%;
@@ -32,12 +32,17 @@
 		.wrapper-cell {
 			display: table-cell;
 			vertical-align: middle;
-		}
+		}*/
 
 		#countdown {
-			margin-left: auto;
-			margin-right: auto;
 			text-align: center;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1;
+			background-color: rgba(255, 255, 255, 0.8);
 		}
 
 		#countdown .digit {
@@ -47,6 +52,15 @@
 		#countdown .btn {
 			font-size: 8vw;
 			margin: 20px;
+		}
+
+		#lap {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 60%;
+			text-align: center;
+			z-index: 0;
 		}
 
 		@media (min-width: 750px) {
@@ -63,28 +77,40 @@
 </head>
 <body>
 	
-	<div class="wrapper-table"><div class="wrapper-cell">
-		<div id="countdown">
-			<h1>The Final Stopwatch</h1>
-			<a href="#" onclick="toggle()"><h1 class="digit">
-				<span id="hour">00</span>
-				:
-				<span id="minute">00</span>
-				:
-				<span id="second">00</span>
-			</h1></a>
-			<a id="startpause" class="btn" href="#" onclick="toggle()"></a>
-			<a class="btn" href="#" onclick="stop()">stop</a>
-		</div>
-	</div></div>
+	<div id="countdown">
+		<h1>The Final Stopwatch</h1>
+		<a href="javascript:;" onclick="toggle()"><h1 class="digit">
+			<span id="hour">00</span>
+			:
+			<span id="minute">00</span>
+			:
+			<span id="second">00</span>
+		</h1></a>
+		<a id="startpause" class="btn" href="javascript:;" onclick="toggle()"></a>
+		<a class="btn" href="javascript:;" onclick="stop()">stop</a>
+		<div></div>
+		<a class="btn" href="javascript:;" onclick="lap()">LAP</a>
+	</div>
+	<div id="lap"></div>	
 
 
 	<script>
 		var hour = 0;
 		var minute = 0;
 		var second = 0;
+		var last = {
+			hour: 0,
+			minute: 0,
+			second: 0
+		};
 		var count;
 		var counting = true;
+		var lapround = 0;
+		var lapping = false;
+
+		function addZero(t) {
+			return t < 10 ? "0" + t : t;
+		}
 
 		function countdown() {
 			count = setInterval(function() {
@@ -98,9 +124,9 @@
 					hour++;
 				}
 
-				document.getElementById('second').innerHTML = second < 10 ? "0" + second : second;
-				document.getElementById('minute').innerHTML = minute < 10 ? "0" + minute : minute;
-				document.getElementById('hour').innerHTML = hour < 10 ? "0" + hour : hour;
+				document.getElementById('second').innerHTML = addZero(second);
+				document.getElementById('minute').innerHTML = addZero(minute);
+				document.getElementById('hour').innerHTML = addZero(hour);
 			}, 1000);
 		}
 
@@ -126,6 +152,11 @@
 			document.getElementById('second').innerHTML = "00";
 			document.getElementById('minute').innerHTML = "00";
 			document.getElementById('hour').innerHTML = "00";
+			document.getElementById('lap').innerHTML = "";
+			moveEase();
+			lapping = false;
+			lapround = 0;
+
 		}
 
 		function toggle() {
@@ -134,6 +165,49 @@
 			}
 			else {
 				start();
+			}
+		}
+
+		function easeOutExpo(t, b, c, d) {
+			return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+		}
+
+		function moveEase() {
+			var t = 0;
+			var b = lapping ? -85 : -50;
+			var c = lapping ? 40 : -40
+			var d = 800;
+			var moveup = setInterval(function() {
+				document.getElementById('countdown').style.transform = "translateY(" + easeOutExpo(t, b, c, d) + "%)";
+				if (t >= d) {
+					clearInterval(moveup);
+				}
+				t += 10;
+			}, 10);
+		}
+
+		function lap() {
+			if (counting) {
+				lapround += 1;
+
+				document.getElementById('lap').innerHTML += "<h1>"
+					+ lapround + ". " 
+					+ addZero(hour - last.hour) + ":"
+					+ addZero(minute - last.minute) + ":"
+					+ addZero(second - last.second) + " / " 
+					+ addZero(hour) + ":"
+					+ addZero(minute) + ":"
+					+ addZero(second) + "</h1>";
+				last.hour = hour;
+				last.minute = minute;
+				last.second = second;
+
+				if (!lapping && lapround === 1) {
+					moveEase();
+					lapping = true;
+				}
+
+				window.scrollBy(0, window.innerHeight);		
 			}
 		}
 
