@@ -153,10 +153,11 @@
 			document.getElementById('minute').innerHTML = "00";
 			document.getElementById('hour').innerHTML = "00";
 			document.getElementById('lap').innerHTML = "";
-			moveEase();
-			lapping = false;
-			lapround = 0;
-
+			if (lapping){
+				moveEase();
+				lapping = false;
+				lapround = 0;	
+			}
 		}
 
 		function toggle() {
