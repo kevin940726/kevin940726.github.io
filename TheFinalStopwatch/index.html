@@ -22,17 +22,10 @@
 			color: black;
 		}
 
-		/*.wrapper-table {
-			display: table;
-		    position: absolute;
-		    height: 100%;
-		    width: 100%;
+		@keyframes fadeIn {
+			from {opacity: 0;}
+			to {opacity: 1;}
 		}
-
-		.wrapper-cell {
-			display: table-cell;
-			vertical-align: middle;
-		}*/
 
 		#countdown {
 			text-align: center;
@@ -43,6 +36,7 @@
 			transform: translateY(-50%);
 			z-index: 1;
 			background-color: rgba(255, 255, 255, 0.8);
+			animation: fadeIn 1s ease-out;
 		}
 
 		#countdown .digit {
@@ -61,6 +55,10 @@
 			top: 60%;
 			text-align: center;
 			z-index: 0;
+		}
+
+		#lap h1 {
+			animation: fadeIn 1s ease-out;
 		}
 
 		@media (min-width: 750px) {
@@ -140,6 +138,10 @@
 			document.getElementById('startpause').innerHTML = counting ? "PAUSE" : "START";
 		}
 
+		function fade() {
+
+		}
+
 		function stop() {
 			pause();
 			hour = 0;
@@ -148,7 +150,18 @@
 			document.getElementById('second').innerHTML = "00";
 			document.getElementById('minute').innerHTML = "00";
 			document.getElementById('hour').innerHTML = "00";
-			document.getElementById('lap').innerHTML = "";
+
+			var t = 0;
+			var fadeOut = setInterval(function() {
+				document.getElementById('lap').style.opacity = easeOutExpo(t, 1, -1, 1000);
+				if (t >= 1000) {
+					clearInterval(fadeOut);
+					document.getElementById('lap').innerHTML = "";
+					document.getElementById('lap').style.opacity = 1;
+				}
+				t += 10;
+			}, 10);	
+
 			if (lapping){
 				moveEase();
 				lapping = false;
@@ -170,6 +183,10 @@
 			return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
 		}
 
+		function easeInCubic(t, b, c, d) {
+			return c*(t/=d)*t*t + b;
+		}
+
 		function moveEase() {
 			var t = 0;
 			var b = lapping ? -85 : -50;
@@ -188,18 +205,16 @@
 			if (counting) {
 				lapround += 1;
 				var diff = second + 60 * (minute + 60 * hour) - last;
-				var lastSecond = diff % 60;
-				var lastMinute = Math.floor(diff / 60) % 60;
-				var lastHour = Math.floor(diff / 60 / 60);
 
-				document.getElementById('lap').innerHTML += "<h1>"
-					+ lapround + ". " 
-					+ addZero(lastHour) + ":"
-					+ addZero(lastMinute) + ":"
-					+ addZero(lastSecond) + " / " 
+				var newLap = document.createElement('h1');
+				newLap.innerHTML = lapround + ". " 
+					+ addZero(Math.floor(diff / 60 / 60)) + ":"
+					+ addZero(Math.floor(diff / 60) % 60) + ":"
+					+ addZero(diff % 60) + " / " 
 					+ addZero(hour) + ":"
 					+ addZero(minute) + ":"
-					+ addZero(second) + "</h1>";
+					+ addZero(second);
+				document.getElementById('lap').appendChild(newLap);
 				last = second + 60 * (minute + 60 * hour);
 
 				if (!lapping && lapround === 1) {
@@ -207,7 +222,17 @@
 					lapping = true;
 				}
 
-				window.scrollBy(0, window.innerHeight);		
+				var lastHeight = document.body.scrollTop;
+				var t = 0;
+				var scrollWindow = setInterval(function() {
+					window.scrollTo(0, 
+						easeOutExpo(t, lastHeight, document.body.scrollHeight- window.innerHeight - lastHeight, 800)
+					);
+					if (t >= 800) {
+						clearInterval(scrollWindow);
+					}
+					t += 10;
+				}, 10);		
 			}
 		}
 
