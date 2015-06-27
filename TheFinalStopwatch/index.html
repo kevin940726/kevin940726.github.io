@@ -189,8 +189,8 @@
 				lapround += 1;
 				var diff = second + 60 * (minute + 60 * hour) - last;
 				var lastSecond = diff % 60;
-				var lastMinute = (diff - lastSecond) % (60 * 60);
-				var lastHour = (diff - lastMinute * 60 - lastSecond) / 60;
+				var lastMinute = Math.floor(diff / 60) % 60;
+				var lastHour = Math.floor(diff / 60 / 60);
 
 				document.getElementById('lap').innerHTML += "<h1>"
 					+ lapround + ". " 
