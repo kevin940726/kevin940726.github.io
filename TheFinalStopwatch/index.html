@@ -98,9 +98,7 @@
 		var hour = 0;
 			minute = 0,
 			second = 0,
-			lastHour = 0,
-			lastMinute = 0,
-			lastSecond = 0,
+			last = 0,
 			count = 0,
 			counting = true,
 			lapround = 0,
@@ -188,18 +186,20 @@
 		function lap() {
 			if (counting) {
 				lapround += 1;
+				var diff = second + 60 * (minute + 60 * hour) - last;
+				var lastSecond = diff % 60;
+				var lastMinute = (diff - lastSecond) % (60 * 60);
+				var lastHour = (diff - lastMinute * 60 - lastSecond) / 60;
 
 				document.getElementById('lap').innerHTML += "<h1>"
 					+ lapround + ". " 
-					+ addZero(hour - lastHour) + ":"
-					+ addZero(minute - lastMinute) + ":"
-					+ addZero(second - lastSecond) + " / " 
+					+ addZero(lastHour) + ":"
+					+ addZero(lastMinute) + ":"
+					+ addZero(lastSecond) + " / " 
 					+ addZero(hour) + ":"
 					+ addZero(minute) + ":"
 					+ addZero(second) + "</h1>";
-				lastHour = hour;
-				lastMinute = minute;
-				lastSecond = second;
+				last = second + 60 * (minute + 60 * hour);
 
 				if (!lapping && lapround === 1) {
 					moveEase();
