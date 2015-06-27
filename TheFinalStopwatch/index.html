@@ -96,17 +96,15 @@
 
 	<script>
 		var hour = 0;
-		var minute = 0;
-		var second = 0;
-		var last = {
-			hour: 0,
-			minute: 0,
-			second: 0
-		};
-		var count;
-		var counting = true;
-		var lapround = 0;
-		var lapping = false;
+			minute = 0,
+			second = 0,
+			lastHour = 0,
+			lastMinute = 0,
+			lastSecond = 0,
+			count = 0,
+			counting = true,
+			lapround = 0,
+			lapping = false;
 
 		function addZero(t) {
 			return t < 10 ? "0" + t : t;
@@ -193,15 +191,15 @@
 
 				document.getElementById('lap').innerHTML += "<h1>"
 					+ lapround + ". " 
-					+ addZero(hour - last.hour) + ":"
-					+ addZero(minute - last.minute) + ":"
-					+ addZero(second - last.second) + " / " 
+					+ addZero(hour - lastHour) + ":"
+					+ addZero(minute - lastMinute) + ":"
+					+ addZero(second - lastSecond) + " / " 
 					+ addZero(hour) + ":"
 					+ addZero(minute) + ":"
 					+ addZero(second) + "</h1>";
-				last.hour = hour;
-				last.minute = minute;
-				last.second = second;
+				lastHour = hour;
+				lastMinute = minute;
+				lastSecond = second;
 
 				if (!lapping && lapround === 1) {
 					moveEase();
