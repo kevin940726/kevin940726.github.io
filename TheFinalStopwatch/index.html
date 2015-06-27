@@ -22,6 +22,16 @@
 			color: black;
 		}
 
+		@-moz-keyframes fadeIn {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+
+		@-webkit-keyframes fadeIn {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+
 		@keyframes fadeIn {
 			from {opacity: 0;}
 			to {opacity: 1;}
@@ -34,8 +44,11 @@
 			right: 0;
 			top: 50%;
 			transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
 			z-index: 1;
 			background-color: rgba(255, 255, 255, 0.8);
+			-moz-animation: fadeIn 1s ease-out;
+			-webkit-animation: fadeIn 1s ease-out;
 			animation: fadeIn 1s ease-out;
 		}
 
@@ -58,6 +71,8 @@
 		}
 
 		#lap h1 {
+			-moz-animation: fadeIn 1s ease-out;
+			-webkit-animation: fadeIn 1s ease-out;
 			animation: fadeIn 1s ease-out;
 		}
 
@@ -154,6 +169,7 @@
 			var t = 0;
 			var fadeOut = setInterval(function() {
 				document.getElementById('lap').style.opacity = easeOutExpo(t, 1, -1, 1000);
+				window.scrollTo(0, easeOutExpo(t, document.body.scrollTop, -document.body.scrollTop, 1000));
 				if (t >= 1000) {
 					clearInterval(fadeOut);
 					document.getElementById('lap').innerHTML = "";
@@ -194,6 +210,7 @@
 			var d = 800;
 			var moveup = setInterval(function() {
 				document.getElementById('countdown').style.transform = "translateY(" + easeOutExpo(t, b, c, d) + "%)";
+				document.getElementById('countdown').style.WebkitTransform = "translateY(" + easeOutExpo(t, b, c, d) + "%)";
 				if (t >= d) {
 					clearInterval(moveup);
 				}
