@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import LatestPosts from '../../components/LatestPosts';
 import Page from '../Page';

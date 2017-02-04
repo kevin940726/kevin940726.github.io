@@ -1,10 +1,10 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import PagePreview from '../PagePreview';
 
 import styles from './index.css';
 
-const PagesList = ({pages}) => {
+const PagesList = ({ pages }) => {
   return (
     <div>
       {

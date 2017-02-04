@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
-const DefaultHeadMeta = (props, {metadata: {pkg}}) => (
+const DefaultHeadMeta = (props, { metadata: { pkg } }) => (
   <div hidden>
     <Helmet
       meta={[
@@ -9,12 +9,12 @@ const DefaultHeadMeta = (props, {metadata: {pkg}}) => (
           name: 'generator', content: `${
           process.env.PHENOMIC_NAME} ${process.env.PHENOMIC_VERSION}`
         },
-        {property: 'og:site_name', content: pkg.name},
-        {name: 'twitter:site', content: `@${pkg.twitter}`},
+        { property: 'og:site_name', content: pkg.name },
+        { name: 'twitter:site', content: `@${pkg.twitter}` },
         ...props.meta ? props.meta : []
       ]}
       script={[
-        {src: 'https://cdn.polyfill.io/v2/polyfill.min.js'},
+        { src: 'https://cdn.polyfill.io/v2/polyfill.min.js' },
         ...props.scripts ? props.scripts : []
       ]}
       />

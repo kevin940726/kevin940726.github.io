@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import enhanceCollection from 'phenomic/lib/enhance-collection';
 
 import PagesList from '../../components/PagesList';
@@ -7,9 +7,9 @@ import styles from './index.css';
 
 const defaultNumberOfPosts = 6;
 
-const LatestPosts = (props, {collection}) => {
+const LatestPosts = (props, { collection }) => {
   const latestPosts = enhanceCollection(collection, {
-    filter: {layout: 'Post'},
+    filter: { layout: 'Post' },
     sort: 'date',
     reverse: true
   })

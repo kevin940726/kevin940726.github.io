@@ -1,10 +1,10 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import Page from '../Page';
 
 import styles from './index.css';
 
-const PageError = ({error, errorText}) => (
+const PageError = ({ error, errorText }) => (
   <Page
     head={{
       // hero credit: https://www.flickr.com/photos/mypubliclands/16101654539/

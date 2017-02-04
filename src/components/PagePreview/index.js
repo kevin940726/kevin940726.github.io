@@ -1,11 +1,11 @@
-import React, {PropTypes} from 'react';
-import {Link} from 'phenomic';
+import React, { PropTypes } from 'react';
+import { Link } from 'phenomic';
 
 import Button from '../../components/Button';
 
 import styles from './index.css';
 
-const PagePreview = ({__url, title, date, description}) => {
+const PagePreview = ({ __url, title, date, description }) => {
   const pageDate = date ? new Date(date) : null;
 
   return (

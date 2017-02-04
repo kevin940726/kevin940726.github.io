@@ -1,9 +1,9 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './index.css';
 
-const Button = ({className, secondary, light, big, ...otherProps}) => (
+const Button = ({ className, secondary, light, big, ...otherProps }) => (
   <span
     role="button"
     {...otherProps}

@@ -99,7 +99,8 @@
       "unicorn/filename-case": 0,
       "import/no-unassigned-import": 0,
       "react/forbid-component-props": 0,
-      "import/extensions": 0
+      "import/extensions": 0,
+      "object-curly-spacing": ["error", "always"]
     }
   },
   "stylelint": {

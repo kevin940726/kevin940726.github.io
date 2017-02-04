@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import warning from 'warning';
-import {BodyContainer, joinUri, Link} from 'phenomic';
+import { BodyContainer, joinUri, Link } from 'phenomic';
 
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
@@ -20,7 +20,7 @@ const Page = (
     children
   },
   {
-    metadata: {pkg}
+    metadata: { pkg }
   }
 ) => {
   warning(
@@ -34,20 +34,20 @@ const Page = (
     joinUri(process.env.PHENOMIC_USER_URL, head.hero);
 
   const meta = [
-    {property: 'og:type', content: 'article'},
-    {property: 'og:title', content: metaTitle},
+    { property: 'og:type', content: 'article' },
+    { property: 'og:title', content: metaTitle },
     {
       property: 'og:url',
       content: joinUri(process.env.PHENOMIC_USER_URL, __url)
     },
-    {property: 'og:image', content: socialImage},
-    {property: 'og:description', content: head.description},
-    {name: 'twitter:card', content: 'summary'},
-    {name: 'twitter:title', content: metaTitle},
-    {name: 'twitter:creator', content: `@${pkg.twitter}`},
-    {name: 'twitter:description', content: head.description},
-    {name: 'twitter:image', content: socialImage},
-    {name: 'description', content: head.description}
+    { property: 'og:image', content: socialImage },
+    { property: 'og:description', content: head.description },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:title', content: metaTitle },
+    { name: 'twitter:creator', content: `@${pkg.twitter}` },
+    { name: 'twitter:description', content: head.description },
+    { name: 'twitter:image', content: socialImage },
+    { name: 'description', content: head.description }
   ];
 
   return (
