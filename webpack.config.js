@@ -63,8 +63,7 @@ export default (config = {}) => {
 						path.resolve(__dirname, 'src')
 					],
 					loaders: [
-						'babel-loader?cacheDirectory',
-						'xo-loader' + (config.dev ? '?emitWarning' : '')
+						'babel-loader?cacheDirectory'
 					]
 				},
 

@@ -1,24 +1,31 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 40rem;
+  width: calc(60em - 120px);
   margin: 1rem auto;
-  padding: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+  background-color: #FFF;
+  padding: 2rem 4rem;
+
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
 }
 
 .title {
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 900;
+  margin-bottom: 1em;
 }
 
 .meta {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   opacity: 0.6;
 }
 
 .description {
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .readMore {

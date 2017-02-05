@@ -1,4 +1,5 @@
 /* Using global sytles is not recommended, prefer local styles via CSS Modules */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
 
 /*
  * box model like it should be
@@ -27,16 +28,23 @@ body {
  */
 html {
   min-height: 100%;
-  background: color(var(--colorPrimary) l(99%));
+
+  /*background-image: linear-gradient(
+    to bottom right,
+    #FFFFFF, #80D8FF
+  );*/
+  background-color: #FFF;
 }
 
 body {
   color: var(--colorText);
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.6em;
 
   /* system font https://medium.com/designing-medium/system-shock-6b1dc6d6596f */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Source Sans Pro', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
+  letter-spacing: 0.1em;
 }
 
 /*
@@ -88,4 +96,8 @@ hr {
   background: var(--colorNeutral);
   opacity: 0.2;
   margin: 2rem 0;
+}
+
+p {
+  margin-bottom: 2em;
 }

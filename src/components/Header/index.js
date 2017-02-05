@@ -12,10 +12,10 @@ const Header = (props, { metadata: { pkg } }) => (
     <nav className={styles.nav}>
       <div className={styles.navPart1}>
         <Link
-          className={styles.link}
+          className={styles.home}
           to={'/'}
           >
-          { 'Home' }
+          { 'Kai Hao' }
         </Link>
       </div>
       <div className={styles.navPart2}>
