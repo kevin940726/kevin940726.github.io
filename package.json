@@ -106,7 +106,14 @@
         "always"
       ],
       "import/no-webpack-loader-syntax": 0,
-      "import/no-unresolved": [2, { "ignore": ["\\.jpg$"] }]
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "\\.jpg$"
+          ]
+        }
+      ]
     }
   },
   "stylelint": {
@@ -161,6 +168,7 @@
     "react-topbar-progress-indicator": "^1.0.0",
     "redux": "^3.0.0",
     "responsive-loader": "^0.7.0",
+    "rxjs": "^5.1.0",
     "style-loader": "^0.13.0",
     "stylelint": "7.7.1",
     "stylelint-config-css-modules": "^0.1.0",

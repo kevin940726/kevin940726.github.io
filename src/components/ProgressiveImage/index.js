@@ -1,20 +1,42 @@
 import React, { Component, PropTypes } from 'react';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/throttleTime';
+
+const onScroll$ = Observable.fromEvent(window, 'scroll');
+
+const requestAnimationFrame = window.requestAnimationFrame;
 
 class ProgressiveImage extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     responsive: PropTypes.object,
-    sizes: PropTypes.string
+    scrollY: PropTypes.number
   };
 
   state = {
     isLoaded: false
   };
 
+  imgRef = null;
+
+  componentDidMount() {
+    onScroll$.subscribe(() => {
+      if (this.imgRef) {
+        requestAnimationFrame(() => {
+          this.imgRef.style.transform = `translateY(${window.scrollY / 2}px)`;
+        });
+      }
+    });
+  }
+
   handleLoad = () => {
     this.setState({
       isLoaded: true
     });
+  }
+  handleBind = ref => {
+    this.imgRef = ref;
   }
 
   render() {
@@ -36,6 +58,7 @@ class ProgressiveImage extends Component {
             transition: 'opacity 1s ease-out'
           }}
           onLoad={this.handleLoad}
+          ref={this.handleBind}
           />
         {props.children}
       </div>
