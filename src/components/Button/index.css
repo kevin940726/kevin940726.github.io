@@ -5,9 +5,7 @@
   font-weight: 100;
   text-align: center;
   border-radius: 3px;
-
-  transition: .2s all;
-
+  transition: 0.2s all;
   color: var(--colorPrimary);
   border: 1px solid var(--colorPrimary);
   background: color(var(--colorNeutralLight) a(0.2));
@@ -39,7 +37,6 @@
     background: color(var(--colorNeutralLight) a(0.3));
   }
 }
-
 
 .big {
   font-size: 1.5rem;

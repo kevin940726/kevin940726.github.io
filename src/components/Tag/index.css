@@ -1,0 +1,16 @@
+.tag {
+  display: inline-flex;
+  background-color: #eee;
+  border-radius: 830726em;
+  padding: 0 0.9em;
+  justify-content: space-around;
+  align-items: center;
+  height: 2em;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  margin-bottom: 0.6em;
+
+  & > span {
+    margin-right: 0.5em;
+  }
+}

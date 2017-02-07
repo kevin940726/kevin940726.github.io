@@ -1,5 +1,5 @@
 /* Using global sytles is not recommended, prefer local styles via CSS Modules */
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
 
 /*
  * box model like it should be
@@ -38,13 +38,14 @@ html {
 
 body {
   color: var(--colorText);
-  font-size: 1rem;
+  font-size: 87.5%;
   line-height: 1.6em;
-
-  /* system font https://medium.com/designing-medium/system-shock-6b1dc6d6596f */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-family: 'Source Sans Pro', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
   letter-spacing: 0.1em;
+}
+
+body,
+code {
+  font-family: 'Open Sans', 'Source Sans Pro', Consolas, Menlo, 'DejaVu Sans Mono', monospace;
 }
 
 /*
@@ -82,7 +83,7 @@ body {
 
 /* minimal styling, prefer removing this and use local styles */
 a {
-  color: inherit;
+  color: var(--colorSecondary);
   text-decoration: none;
 
   &:hover {
@@ -100,4 +101,14 @@ hr {
 
 p {
   margin-bottom: 2em;
+}
+
+h1,
+h2 {
+  line-height: 2em;
+  border-bottom: 1px solid #EEE;
+}
+
+h2:first-letter {
+  color: var(--colorSecondary);
 }

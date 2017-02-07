@@ -1,0 +1,15 @@
+.pre {
+  background-color: #eee;
+  padding: 1em 1.5em;
+  display: inline-flex;
+}
+
+.preExpand {
+  composes: pre;
+  width: 100%;
+}
+
+.code {
+  letter-spacing: 0.15em;
+  word-spacing: 0.5em;
+}

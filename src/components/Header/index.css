@@ -8,7 +8,6 @@
   left: 0;
   right: 0;
   top: 0;
-
   color: var(--colorNeutralDark);
   z-index: 100;
 }
@@ -40,14 +39,13 @@
   opacity: 0.6;
   transition: 0.15s all;
   border-bottom: 1px solid transparent;
-  background-color: #FFFE;
 
   &:hover,
   &:focus {
     color: inherit;
     opacity: 1;
     border-bottom-color: var(--colorNeutralLight);
-    background-color: #FFFF;
+    background-color: #fffF;
   }
 }
 
@@ -67,12 +65,11 @@
   line-height: 1.5em;
   padding: 0 3px;
   text-decoration: none;
-  background-color: #FFFE;
   transition: all 0.15s;
 
   &:focus,
   &:hover {
     text-decoration: none;
-    background-color: #FFFF;
+    background-color: #fffF;
   }
 }

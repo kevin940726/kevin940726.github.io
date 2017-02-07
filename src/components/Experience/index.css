@@ -1,0 +1,36 @@
+.exp {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-direction: column;
+  margin-bottom: 1em;
+  padding-bottom: 0.7em;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #EEE;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.1em;
+}
+
+.subtitle {
+  font-size: 1em;
+
+  &:before {
+    content: '-';
+    margin-right: 0.5em;
+  }
+}
+
+.date {
+  color: var(--colorNeutral);
+  font-size: 0.75em;
+}

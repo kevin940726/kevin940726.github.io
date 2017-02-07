@@ -195,7 +195,7 @@ export default (config = {}) => {
 
         // copy assets and return generated path in js
 				{
-					test: /\.(html|ico|jpe?g|png|gif|eot|otf|webp|ttf|woff|woff2)$/,
+					test: /\.(html|ico|eot|otf|ttf|woff|woff2)$/,
 					loader: 'file-loader',
 					query: {
 						name: '[path][name].[hash].[ext]',
@@ -203,12 +203,35 @@ export default (config = {}) => {
 					}
 				},
 
+        // image
+        {
+          test: /\.(jpe?g|png|gif|webp)$/,
+					loader: 'file-loader!img-loader',
+					query: {
+						name: '[path][name].[hash].[ext]',
+						context: path.join(__dirname, config.source)
+					}
+        },
+
         // svg as raw string to be inlined
 				{
 					test: /\.svg$/,
 					loader: 'raw-loader'
 				}
-			]
+			],
+
+      preLoaders: [
+        // image compression
+        {
+          test: /\.(jpe?g|png|gif|webp)$/,
+					loader: 'image-webpack-loader',
+					query: {
+						progressive: true,
+            optimizationLevel: 7,
+            interlaced: false
+					}
+        },
+      ]
 		},
 
     // webpack 1

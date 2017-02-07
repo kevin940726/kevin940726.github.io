@@ -1,0 +1,15 @@
+.emoji {
+  font-size: 1em;
+  height: 1.6em;
+  width: 1.6em;
+  vertical-align: bottom;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  & > img {
+    height: 1.1em;
+    width: 1.1em;
+  }
+}

@@ -9,11 +9,12 @@ module.exports = config => [
           colorPrimaryDark: '#107491',
           colorPrimary: '#007acc',
           colorSecondaryDark: '#22846C',
-          colorSecondary: '#46BE77',
+          colorSecondary: '#FF5722',
           colorNeutralDark: '#111',
           colorNeutral: '#8C8D91',
           colorNeutralLight: '#FBFCFC',
-          colorText: '#555'
+          colorText: '#555',
+          colorInfo: '#3273dc'
         }
       }
     }
