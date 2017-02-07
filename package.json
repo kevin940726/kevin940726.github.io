@@ -11,7 +11,9 @@
     "start": "phenomic start",
     "build": "phenomic build",
     "pretest": "npm run lint",
-    "test": "xo && npm run build"
+    "test": "npm run lint && npm run build",
+    "predeploy": "npm run test",
+    "deploy": "./scripts/deploy.sh"
   },
   "phenomic": {
     "CNAME": true
