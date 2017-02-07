@@ -39,7 +39,7 @@ html {
 body {
   color: var(--colorText);
   font-size: 87.5%;
-  line-height: 1.6em;
+  line-height: 1.6;
   letter-spacing: 0.1em;
 }
 

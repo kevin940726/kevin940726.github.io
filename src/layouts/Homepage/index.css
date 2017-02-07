@@ -1,5 +1,5 @@
 .cover {
-  height: 400px;
+  height: calc(100vw / 1024 * 400);
   background-position: center bottom;
   background-size: cover;
   display: flex;
@@ -10,18 +10,21 @@
   transition: filter 0.2s ease-out;
   overflow: hidden;
 
-  &:before {
+  &:after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: #FFF9;
+    background-color: color(var(--colorSecondary) a(70%));
   }
 
   & > .coverTitle {
     z-index: 10;
+    color: #FFF;
+    font-size: 3rem;
+    padding: 0 2em;
   }
 }
 
