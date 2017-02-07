@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import styles from './index.css';
+
 class ProgressiveImage extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
@@ -51,16 +53,11 @@ class ProgressiveImage extends Component {
       <div className={props.className}>
         <img
           src={responsive.src}
-          style={{
-            filter: 'blur(5px)'
-          }}
+          className={styles.placeholder}
           />
         <img
           src={src}
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transition: 'opacity 1s ease-out'
-          }}
+          className={isLoaded ? styles.srcLoaded : styles.src}
           onLoad={this.handleLoad}
           ref={this.handleBind}
           />

@@ -20,14 +20,6 @@
     background-color: #FFF9;
   }
 
-  & > img {
-    height: auto;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
   & > .coverTitle {
     z-index: 10;
   }
