@@ -3,7 +3,10 @@
   "name": "portfolio",
   "homepage": "https://kevin940726.github.io/",
   "twitter": "",
-  "repository": "https://github.com/kevin940726/kevin940726.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kevin940726/kevin940726.github.io.git"
+  },
   "scripts": {
     "lint:js": "xo --fix",
     "lint:css": "stylelint \"src/**/*.css\"",
