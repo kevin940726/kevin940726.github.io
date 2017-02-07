@@ -1,13 +1,9 @@
 .cover {
   height: calc(100vw / 1024 * 400);
-  background-position: center bottom;
-  background-size: cover;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
-  filter: blur(0px);
-  transition: filter 0.2s ease-out;
   overflow: hidden;
 
   &:after {
@@ -17,14 +13,14 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: color(var(--colorSecondary) a(70%));
+    background-color: color(var(--colorSecondary) a(60%));
   }
 
   & > .coverTitle {
     z-index: 10;
     color: #FFF;
     font-size: 3rem;
-    padding: 0 2em;
+    margin: auto 2em;
   }
 }
 

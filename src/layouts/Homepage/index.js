@@ -20,8 +20,7 @@ const Homepage = () => (
       isParallax
       >
       <p className={styles.coverTitle}>
-        {'Hi, I am Kai Hao, a front-end developer in Taiwan.'}
-        <Emoji text="smile"/>
+        {'<Front-End Developer/>'}
       </p>
     </ProgressiveImage>
     <div className={styles.container}>

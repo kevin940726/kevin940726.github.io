@@ -206,7 +206,7 @@ export default (config = {}) => {
         // image
         {
           test: /\.(jpe?g|png|gif|webp)$/,
-					loader: 'file-loader!img-loader',
+					loader: 'file-loader',
 					query: {
 						name: '[path][name].[hash].[ext]',
 						context: path.join(__dirname, config.source)
@@ -226,9 +226,10 @@ export default (config = {}) => {
           test: /\.(jpe?g|png|gif|webp)$/,
 					loader: 'image-webpack-loader',
 					query: {
-						progressive: true,
-            optimizationLevel: 7,
-            interlaced: false
+            mozjpeg: {
+              progressive: true,
+              quality: 50
+            }
 					}
         },
       ]
