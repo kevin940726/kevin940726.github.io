@@ -17,6 +17,7 @@ const Homepage = () => (
       className={styles.cover}
       src={cover}
       responsive={coverResponsive}
+      isParallax
       >
       <p className={styles.coverTitle}>
         {'Hi, I am Kai Hao, a front-end developer in Taiwan.'}

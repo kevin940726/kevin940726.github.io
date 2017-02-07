@@ -1,17 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/throttleTime';
-
-const onScroll$ = Observable.fromEvent(window, 'scroll');
-
-const requestAnimationFrame = window.requestAnimationFrame;
 
 class ProgressiveImage extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     responsive: PropTypes.object,
-    scrollY: PropTypes.number
+    scrollY: PropTypes.number,
+    isParallax: PropTypes.bool
   };
 
   state = {
@@ -21,13 +15,23 @@ class ProgressiveImage extends Component {
   imgRef = null;
 
   componentDidMount() {
-    onScroll$.subscribe(() => {
-      if (this.imgRef) {
-        requestAnimationFrame(() => {
-          this.imgRef.style.transform = `translateY(${window.scrollY / 2}px)`;
-        });
-      }
-    });
+    if (this.props.isParallax) {
+      const requestAnimationFrame = window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
+
+      window.addEventListener('scroll', () => {
+        if (this.imgRef) {
+          requestAnimationFrame(() => {
+            this.imgRef.style.transform = `translateY(${window.scrollY / 2}px)`;
+          });
+        }
+      });
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll');
   }
 
   handleLoad = () => {
