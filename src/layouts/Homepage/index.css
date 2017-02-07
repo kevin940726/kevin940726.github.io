@@ -1,5 +1,5 @@
 .cover {
-  height: calc(100vw / 1024 * 400);
+  height: calc(100vw / 1024 * 300);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -31,8 +31,8 @@
   position: relative;
   left: 0;
   right: 0;
-  margin: 70px auto;
-  padding: 40px 80px;
+  margin: 0 auto;
+  padding: 2em 4em;
   box-sizing: border-box;
   max-width: var(--maxWidth);
 }
