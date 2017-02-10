@@ -112,3 +112,8 @@ h2 {
 h2:first-letter {
   color: var(--colorSecondary);
 }
+
+img {
+  image-orientation: from-image;
+  /* fix the orientation not match to the source image */
+}

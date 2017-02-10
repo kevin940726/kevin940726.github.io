@@ -1,3 +1,8 @@
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
 .img {
   height: auto;
   width: 100%;
@@ -12,16 +17,31 @@
 .placeholder {
   composes: img;
   filter: blur(5px);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translate(-50%, -50%);
 }
 
 .src {
   composes: img;
   transition: opacity 1s ease-out;
   opacity: 0;
-  filter: blur(5px);
+}
+
+.srcBlur {
+  composes: src;
+  filter: blur(2px);
 }
 
 .srcLoaded {
   composes: src;
+  opacity: 1;
+}
+
+.srcBlurLoaded {
+  composes: srcBlur;
   opacity: 1;
 }

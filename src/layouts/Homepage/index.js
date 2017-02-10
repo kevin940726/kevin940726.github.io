@@ -6,8 +6,10 @@ import Emoji from '../../components/Emoji';
 import Tag from '../../components/Tag';
 import Experience from '../../components/Experience';
 
-import cover from '../../assets/cover.jpg';
-import coverResponsive from '!responsive?sizes[]=50w!../../assets/cover.jpg';
+import Work from '../Work';
+
+import cover from '../../assets/photos/IMG_0585.jpg';
+import coverResponsive from '!responsive?sizes[]=50w!../../assets/photos/IMG_0585.jpg';
 
 import styles from './index.css';
 
@@ -18,6 +20,7 @@ const Homepage = () => (
       src={cover}
       responsive={coverResponsive}
       isParallax
+      isBlur
       >
       <p className={styles.coverTitle}>
         {'<Front-End Developer/>'}
@@ -69,6 +72,11 @@ const Homepage = () => (
           {'Full-stack web developer intern in '}
           <a href="http://www.25sprout.com" target="_blank" rel="noreferrer noopener">25sprout</a>
         </Experience>
+      </div>
+
+      <div>
+        <h2>Work</h2>
+        <Work />
       </div>
     </div>
 

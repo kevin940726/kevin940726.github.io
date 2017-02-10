@@ -6,8 +6,8 @@ class ProgressiveImage extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     responsive: PropTypes.object,
-    scrollY: PropTypes.number,
-    isParallax: PropTypes.bool
+    isParallax: PropTypes.bool,
+    isBlur: PropTypes.bool
   };
 
   state = {
@@ -46,18 +46,20 @@ class ProgressiveImage extends Component {
   }
 
   render() {
-    const { src, responsive, ...props } = this.props;
+    const { src, responsive, isBlur, ...props } = this.props;
     const { isLoaded } = this.state;
 
+    const prefix = isBlur ? 'srcBlur' : 'src';
+
     return (
-      <div className={props.className}>
+      <div className={`${props.className || ''} ${styles.container}`}>
         <img
           src={responsive.src}
           className={styles.placeholder}
           />
         <img
           src={src}
-          className={isLoaded ? styles.srcLoaded : styles.src}
+          className={isLoaded ? styles[`${prefix}Loaded`] : styles[prefix]}
           onLoad={this.handleLoad}
           ref={this.handleBind}
           />

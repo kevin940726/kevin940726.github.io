@@ -1,5 +1,5 @@
 .cover {
-  height: calc(100vw / 1024 * 300);
+  height: calc(100vw / 1024 * 400);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -21,6 +21,17 @@
     color: #FFF;
     font-size: 3rem;
     margin: auto 2em;
+    position: absolute;
+  }
+
+  & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+    bottom: 0;
+    right: 0;
+    margin: auto;
   }
 }
 

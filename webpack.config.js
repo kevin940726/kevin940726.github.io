@@ -206,11 +206,9 @@ export default (config = {}) => {
         // image
         {
           test: /\.(jpe?g|png|gif|webp)$/,
-					loader: 'file-loader',
-					query: {
-						name: '[path][name].[hash].[ext]',
-						context: path.join(__dirname, config.source)
-					}
+					loaders: [
+            `file-loader?name=[path][name].[hash].[ext]&context=${path.join(__dirname, config.source)}`
+          ]
         },
 
         // svg as raw string to be inlined
