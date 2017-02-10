@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-GIT_DEPLOY_REPO=${GIT_DEPLOY_REPO:-$(node -e 'process.stdout.write(require("./package.json").repository)')}
+GIT_DEPLOY_REPO=${GIT_DEPLOY_REPO:-$(node -e 'process.stdout.write(require("./package.json").repository.url)')}
 
 cd dist && \
 $(npm bin)/rimraf .git
