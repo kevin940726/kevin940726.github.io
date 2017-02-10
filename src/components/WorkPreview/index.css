@@ -34,6 +34,10 @@
   border-left: 1px solid #EEE;
   border-right: 1px solid #EEE;
 
+  &:hover img {
+    width: 100%;
+  }
+
   & .placeholder {
     position: absolute;
     top: 0;
@@ -56,10 +60,6 @@
     bottom: 0;
     margin: auto;
     transition: all 0.15s ease-out;
-
-    &:hover {
-      width: 100%;
-    }
   }
 }
 
@@ -98,6 +98,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.15s ease-out;
 
   & > :global(.SVGInline) {
     display: inline-flex;
@@ -107,7 +108,10 @@
 
   & svg {
     width: 1.2em;
-    fill: var(--colorPrimaryDark);
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 }
 

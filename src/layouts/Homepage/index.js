@@ -76,7 +76,7 @@ const Homepage = () => (
 
       <div>
         <h2>Work</h2>
-        <Work />
+        <Work/>
       </div>
     </div>
 
