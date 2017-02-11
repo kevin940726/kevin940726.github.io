@@ -1,6 +1,7 @@
 import React from 'react';
 
 import WorkPreview from '../../components/WorkPreview';
+import Emoji from '../../components/Emoji';
 
 import BeanfunLoginImg from '../../assets/BeanfunLogin.jpg';
 import BeanfunLoginResponsive from '!responsive?sizes[]=50w!../../assets/BeanfunLogin.jpg';
@@ -16,13 +17,14 @@ import styles from './index.css';
 
 const Work = () => (
   <ul className={styles.work}>
+    <h3>I <Emoji text="heart"/> Open Source</h3>
     <WorkPreview
       title="BeanfunLogin"
       img={BeanfunLoginImg}
       responsive={BeanfunLoginResponsive}
       repo="https://github.com/kevin940726/BeanfunLogin"
       url="https://kevin940726.github.io/BeanfunLogin"
-      description=""
+      description="A login application written in C#.NET for solving a specific problem of an online game. About 3000 users a day, 92.7% returning users, over 17000 total users until now."
       skills={['C#', '.NET', 'network analysis']}
       />
 

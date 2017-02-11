@@ -1,17 +1,12 @@
 import React, { PropTypes } from 'react';
-import { lib } from 'emojilib';
+import emojiUnicode from 'emoji-unicode';
+import toEmoji from 'emoji-name-map';
 import classNames from 'classnames';
 
 import styles from './index.css';
 
-const charCodeUTF32 = str => (
-  ((str.charCodeAt(0) - 0xD800) * 0x400) +
-  (str.charCodeAt(1) - 0xDC00) +
-  0x10000
-);
-
 const Emoji = ({ text, ...props }) => {
-  const code = charCodeUTF32(lib[text].char).toString(16);
+  const code = emojiUnicode(toEmoji.get(text));
 
   return (
     <span {...props} className={classNames(props.className, styles.emoji)}>
