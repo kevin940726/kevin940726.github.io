@@ -11,7 +11,7 @@ const Emoji = ({ text, ...props }) => {
   return (
     <span {...props} className={classNames(props.className, styles.emoji)}>
       <img
-        src={`http://emojistatic.github.io/images/32/${code}.png`}
+        src={`//emojistatic.github.io/images/32/${code}.png`}
         alt={text}
         />
     </span>
