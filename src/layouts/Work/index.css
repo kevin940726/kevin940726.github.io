@@ -4,3 +4,25 @@
   padding: 0;
   flex-direction: column;
 }
+
+.subtitle {
+  margin-top: 1em;
+
+  &:before {
+    content: '#';
+    margin-right: 0.7em;
+  }
+}
+
+.note {
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.icon {
+  & svg {
+    font-size: 1em;
+    height: 1em;
+    width: 1em;
+  }
+}

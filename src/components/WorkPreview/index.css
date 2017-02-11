@@ -1,8 +1,12 @@
+:root {
+  --imgWidth: 210px;
+}
+
 .preview {
   position: relative;
   display: flex;
   width: 100%;
-  flex-basis: 200px;
+  flex-basis: var(--imgWidth);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .16), 0 1px 2px rgba(0, 0, 0, .23);
   box-sizing: content-box;
   margin-bottom: 15px;
@@ -21,11 +25,11 @@
 
 .img {
   font-size: 0;
-  width: 200px;
-  height: 200px;
+  width: var(--imgWidth);
+  height: var(--imgWidth);
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 200px;
+  flex-basis: var(--imgWidth);
   position: relative;
   overflow: hidden;
   display: flex;

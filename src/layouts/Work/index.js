@@ -1,8 +1,12 @@
 import React from 'react';
+import Svg from 'react-svg-inline';
+
+import metadata from '../../metadata';
 
 import WorkPreview from '../../components/WorkPreview';
 import Emoji from '../../components/Emoji';
 
+import gitHubSvg from '../../assets/icons/iconmonstr-github-1.svg';
 import BeanfunLoginImg from '../../assets/BeanfunLogin.jpg';
 import BeanfunLoginResponsive from '!responsive?sizes[]=50w!../../assets/BeanfunLogin.jpg';
 import minesweeperImg from '../../assets/work/minesweeper.png';
@@ -12,12 +16,13 @@ import mitravelImg from '../../assets/work/mitravel.png';
 import whostoneImg from '../../assets/work/whostone.png';
 import whostoneResponsive from '!responsive?sizes[]=50w!../../assets/work/whostone.png';
 import abcMartImg from '../../assets/work/abc-mart.png';
+import give543Img from '../../assets/work/give543.png';
 
 import styles from './index.css';
 
 const Work = () => (
   <ul className={styles.work}>
-    <h3>I <Emoji text="heart"/> Open Source</h3>
+    <h3 className={styles.subtitle}>I <Emoji text="heart"/> Open Source</h3>
     <WorkPreview
       title="BeanfunLogin"
       img={BeanfunLoginImg}
@@ -55,6 +60,21 @@ const Work = () => (
       npm="https://npmjs.com/package/svg-css-modules-loader"
       description="A webpack loader to apply css-modules to react svg element."
       skills={['Node.js', 'webpack-loader', 'css-modules', 'svg']}
+      />
+    <span className={styles.note}>
+      {'...and many more, follow me on '}
+      <a className={styles.icon} href={metadata.github} target="_blank" rel="noopener noreferrer">
+        <Svg svg={gitHubSvg} cleanup/> Github
+      </a>.
+    </span>
+
+    <h3 className={styles.subtitle}>I <Emoji text="heart"/> working with others</h3>
+    <WorkPreview
+      title="give543"
+      img={give543Img}
+      url="http://www.give543.com"
+      description="Built the React-based architecture from the ground up. Introduced new technology to our team to increase the productivity while keeping it maintainable and scalable. Had to left the project due to military service."
+      skills={['React', 'Redux', 'webpack', 'storybook', 'postcss']}
       />
 
     <WorkPreview

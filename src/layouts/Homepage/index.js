@@ -67,7 +67,7 @@ const Homepage = () => (
         <h2>Experience</h2>
         <Experience
           subtitle="Mainly responsible for front-end developing."
-          date="2015/07 - 2016/07"
+          date="2015/07 - 2016/08"
           >
           {'Full-stack web developer intern in '}
           <a href="http://www.25sprout.com" target="_blank" rel="noreferrer noopener">25sprout</a>
