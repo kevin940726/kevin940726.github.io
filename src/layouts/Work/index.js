@@ -101,6 +101,13 @@ const Work = () => (
       description="Responsible for assisting front-end developing."
       skills={['Angular1', 'jQuery', 'scss']}
       />
+
+    <WorkPreview
+      title="The recommender system of flights and passengers in the airline industry"
+      url="https://www.abc-mart.com.tw"
+      description="Final project in NTU with the lead of professor Hsin-Min Lu. A recommender system based on historical data."
+      skills={['R', 'IR', 'algorithm']}
+      />
   </ul>
 );
 

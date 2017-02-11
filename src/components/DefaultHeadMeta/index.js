@@ -22,7 +22,8 @@ const DefaultHeadMeta = (props, { metadata: { pkg } }) => (
     { /* meta viewport safari/chrome/edge */ }
     <Helmet
       meta={[{
-        name: 'viewport', content: 'width=device-width, initial-scale=1'
+        name: 'viewport', content: 'width=device-width, initial-scale=1',
+        title: 'Kai Hao'
       }]}
       />
     <style>{ '@-ms-viewport { width: device-width; }' }</style>

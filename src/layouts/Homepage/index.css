@@ -1,5 +1,5 @@
 .cover {
-  height: calc(100vw / 1024 * 400);
+  height: 400px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -36,14 +36,20 @@
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   background-color: #fff;
-  min-height: calc(100vh - 140px);
   position: relative;
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding: 2em 4em;
+  padding: 2em 5em;
   box-sizing: border-box;
   max-width: var(--maxWidth);
+}
+
+.blockquote {
+  font-family: 'Cormorant Garamond', 'Open Sans';
+  font-size: 1.3em;
+  font-style: italic;
+  color: var(--colorText);
 }
