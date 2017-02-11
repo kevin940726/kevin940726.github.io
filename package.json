@@ -1,7 +1,10 @@
 {
   "private": true,
   "name": "portfolio",
+  "title": "Kai Hao",
   "homepage": "https://kevin940726.github.io/",
+  "description": "Hi, I am Kai Hao, a front-end developer in Taiwan.",
+  "twitter": "kevin940726",
   "repository": {
     "type": "git",
     "url": "git@github.com:kevin940726/kevin940726.github.io.git"

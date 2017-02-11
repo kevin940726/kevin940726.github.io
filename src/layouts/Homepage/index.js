@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import ProgressiveImage from '../../components/ProgressiveImage';
 import LatestPosts from '../../components/LatestPosts';
@@ -11,10 +12,36 @@ import Work from '../Work';
 import cover from '../../assets/photos/IMG_0585.jpg';
 import coverResponsive from '!responsive?sizes[]=50w!../../assets/photos/IMG_0585.jpg';
 
+import metadata from '../../metadata';
+
 import styles from './index.css';
+
+const { pkg } = metadata;
+
+const meta = [
+  { property: 'og:type', content: 'profile' },
+  { property: 'og:title', content: pkg.title },
+  {
+    property: 'og:url',
+    content: pkg.homepage
+  },
+  { property: 'og:image', content: cover },
+  { property: 'og:description', content: pkg.description },
+  { name: 'twitter:card', content: 'summary' },
+  { name: 'twitter:title', content: pkg.title },
+  { name: 'twitter:creator', content: `@${pkg.twitter}` },
+  { name: 'twitter:description', content: pkg.description },
+  { name: 'twitter:image', content: cover },
+  { name: 'description', content: pkg.description }
+];
 
 const Homepage = () => (
   <div>
+    <Helmet
+      title={pkg.title}
+      meta={meta}
+      />
+
     <ProgressiveImage
       className={styles.cover}
       src={cover}
