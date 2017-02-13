@@ -45,6 +45,12 @@ class ProgressiveImage extends Component {
   }
   handleBind = ref => {
     this.imgRef = ref;
+
+    if (this.imgRef.complete) {
+      this.imgRef.load();
+    }
+    // handling cached image,
+    // see http://mikefowler.me/2014/04/22/cached-images-load-event/
   }
 
   render() {
