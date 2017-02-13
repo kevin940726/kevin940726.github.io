@@ -25,7 +25,9 @@
   padding: 5rem 0;
   padding: 10vh 0;
   text-align: center;
-  background: linear-gradient(to bottom, var(--colorPrimaryDark), color(var(--colorPrimary) a(0.2)));
+  position: absolute;
+  width: 100%;
+  z-index: 10;
 }
 
 .heading {
@@ -60,4 +62,8 @@
   & img {
     max-width: 100%;
   }
+}
+
+.heroImg {
+  margin-bottom: 4em;
 }

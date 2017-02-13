@@ -146,6 +146,7 @@
     "babel-preset-stage-1": "^6.13.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.25.0",
+    "date-fns": "^1.27.2",
     "emoji-name-map": "^1.2.2",
     "emoji-unicode": "^1.0.4",
     "eslint": "^3.7.1",

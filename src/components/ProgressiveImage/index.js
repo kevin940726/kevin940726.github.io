@@ -2,12 +2,18 @@ import React, { Component, PropTypes } from 'react';
 
 import styles from './index.css';
 
+const requestAnimationFrame = window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.msRequestAnimationFrame;
+
 class ProgressiveImage extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     responsive: PropTypes.object,
     isParallax: PropTypes.bool,
-    isBlur: PropTypes.bool
+    isBlur: PropTypes.bool,
+    isCover: PropTypes.bool
   };
 
   state = {
@@ -18,24 +24,20 @@ class ProgressiveImage extends Component {
 
   componentDidMount() {
     if (this.props.isParallax) {
-      const requestAnimationFrame = window.requestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.msRequestAnimationFrame;
-
-      window.addEventListener('scroll', () => {
-        if (this.imgRef) {
-          requestAnimationFrame(() => {
-            this.imgRef.style.transform = `translateY(${window.scrollY / 2}px)`;
-          });
-        }
-      });
+      window.addEventListener('scroll', this.handleScroll);
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll');
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
+  handleScroll = () => {
+    if (this.imgRef) {
+      requestAnimationFrame(() => {
+        this.imgRef.style.transform = `translateY(${window.scrollY / 2}px)`;
+      });
+    }
+  }
   handleLoad = () => {
     this.setState({
       isLoaded: true
@@ -46,17 +48,19 @@ class ProgressiveImage extends Component {
   }
 
   render() {
-    const { src, responsive, isBlur, ...props } = this.props;
+    const { src, responsive, isBlur, isCover, ...props } = this.props;
     const { isLoaded } = this.state;
 
     const prefix = isBlur ? 'srcBlur' : 'src';
 
     return (
-      <div className={`${props.className || ''} ${styles.container}`}>
-        <img
-          src={responsive.src}
-          className={styles.placeholder}
-          />
+      <div className={`${props.className || ''} ${isCover ? styles.cover : styles.container}`}>
+        {responsive !== undefined && (
+          <img
+            src={responsive.src}
+            className={styles.placeholder}
+            />
+        )}
         <img
           src={src}
           className={isLoaded ? styles[`${prefix}Loaded`] : styles[prefix]}

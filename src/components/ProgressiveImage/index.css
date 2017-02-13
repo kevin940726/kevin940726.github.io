@@ -1,6 +1,42 @@
 .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
   overflow: hidden;
+
+  & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+
+    &:last-of-type {
+      position: relative;
+    }
+  }
+}
+
+.cover {
+  composes: container;
+  height: 400px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: color(var(--colorSecondary) a(60%));
+  }
+
+  & img:last-of-type {
+    position: absolute;
+  }
 }
 
 .img {

@@ -5,6 +5,10 @@ import { BodyContainer, joinUri, Link } from 'phenomic';
 
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
+import ProgressiveImage from '../../components/ProgressiveImage';
+
+import cover from '../../assets/photos/IMG_0585.jpg';
+import coverResponsive from '!responsive?sizes[]=50w!../../assets/photos/IMG_0585.jpg';
 
 import styles from './index.css';
 
@@ -28,7 +32,7 @@ const Page = (
     `Your page '${__filename}' needs a title`
   );
 
-  const metaTitle = head.metaTitle ? head.metaTitle : head.title;
+  const metaTitle = `${head.metaTitle ? head.metaTitle : head.title} - ${pkg.title}`;
 
   const socialImage = head.hero && head.hero.match('://') ? head.hero :
     joinUri(process.env.PHENOMIC_USER_URL, head.hero);
@@ -57,11 +61,12 @@ const Page = (
         meta={meta}
         />
       {
-        <div
-          className={styles.hero}
-          style={head.hero && {
-            background: `#111 url(${head.hero}) 50% 50% / cover`
-          }}
+        <ProgressiveImage
+          src={head.hero || cover}
+          responsive={head.hero ? undefined : coverResponsive}
+          isParallax
+          isBlur
+          isCover
           >
           <div className={styles.header}>
             <div className={styles.wrapper}>
@@ -76,11 +81,17 @@ const Page = (
               }
             </div>
           </div>
-        </div>
+        </ProgressiveImage>
       }
       <div className={styles.wrapper + ' ' + styles.pageContent}>
         { header }
         <div className={styles.body}>
+          {head.hero !== undefined && (
+            <ProgressiveImage
+              src={head.hero}
+              className={styles.heroImg}
+              />
+          )}
           {
             isLoading ?
               <Loading/> :

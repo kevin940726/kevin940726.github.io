@@ -43,11 +43,11 @@ const Homepage = () => (
       />
 
     <ProgressiveImage
-      className={styles.cover}
       src={cover}
       responsive={coverResponsive}
       isParallax
       isBlur
+      isCover
       >
       <p className={styles.coverTitle}>
         {'I am a <Front-End Developer/>'}

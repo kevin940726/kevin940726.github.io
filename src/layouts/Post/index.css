@@ -1,7 +1,13 @@
 .header {
-  display: flex;
-  justify-content: center;
-  opacity: 0.6;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
+  display: block;
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.date {
+  font-size: 0.8em;
+  text-align: right;
+  color: var(--colorNeutral);
+  display: block;
+  letter-spacing: 0.2em;
 }
