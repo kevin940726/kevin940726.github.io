@@ -34,8 +34,11 @@ const Page = (
 
   const metaTitle = `${head.metaTitle ? head.metaTitle : head.title} - ${pkg.title}`;
 
-  const socialImage = head.hero && head.hero.match('://') ? head.hero :
-    joinUri(process.env.PHENOMIC_USER_URL, head.hero);
+  let socialImage = joinUri(process.env.PHENOMIC_USER_URL, cover);
+  if (head.hero) {
+    socialImage = head.hero.match('://') ? head.hero :
+      joinUri(process.env.PHENOMIC_USER_URL, head.hero);
+  }
 
   const meta = [
     { property: 'og:type', content: 'article' },

@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { joinUri } from 'phenomic';
 
 import ProgressiveImage from '../../components/ProgressiveImage';
 import LatestPosts from '../../components/LatestPosts';
@@ -25,7 +26,7 @@ const meta = [
     property: 'og:url',
     content: pkg.homepage
   },
-  { property: 'og:image', content: cover },
+  { property: 'og:image', content: joinUri(process.env.PHENOMIC_USER_URL, cover) },
   { property: 'og:description', content: pkg.description },
   { name: 'twitter:card', content: 'summary' },
   { name: 'twitter:title', content: pkg.title },
