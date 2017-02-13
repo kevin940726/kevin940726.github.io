@@ -2,11 +2,6 @@ import React, { Component, PropTypes } from 'react';
 
 import styles from './index.css';
 
-const requestAnimationFrame = window.requestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.msRequestAnimationFrame;
-
 class ProgressiveImage extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
@@ -24,6 +19,11 @@ class ProgressiveImage extends Component {
 
   componentDidMount() {
     if (this.props.isParallax) {
+      window.requestAnimationFrame = window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
+
       window.addEventListener('scroll', this.handleScroll);
     }
   }
@@ -32,8 +32,8 @@ class ProgressiveImage extends Component {
   }
 
   handleScroll = () => {
-    if (this.imgRef) {
-      requestAnimationFrame(() => {
+    if (this.imgRef && window.requestAnimationFrame) {
+      window.requestAnimationFrame(() => {
         this.imgRef.style.transform = `translateY(${window.scrollY / 2}px)`;
       });
     }
