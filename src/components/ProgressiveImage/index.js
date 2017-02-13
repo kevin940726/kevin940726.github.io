@@ -48,14 +48,16 @@ class ProgressiveImage extends Component {
   }
 
   render() {
-    const { src, responsive, isBlur, isCover, ...props } = this.props;
+    const { src, isBlur, isCover, ...props } = this.props;
     const { isLoaded } = this.state;
 
     const prefix = isBlur ? 'srcBlur' : 'src';
 
+    const responsive = this.props.responsive;
+
     return (
       <div className={`${props.className || ''} ${isCover ? styles.cover : styles.container}`}>
-        {responsive !== undefined && (
+        {responsive && (
           <img
             src={responsive.src}
             className={styles.placeholder}

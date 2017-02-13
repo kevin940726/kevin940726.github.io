@@ -40,7 +40,7 @@ export default (config = {}) => {
 					test: /\.(md|markdown)$/,
 					loader: phenomicLoader,
 					query: {
-						context: path.join(__dirname, config.source)
+						context: path.join(__dirname, config.source),
             // plugins: [
             //   ...require("phenomic/lib/loader-preset-markdown").default
             // ]

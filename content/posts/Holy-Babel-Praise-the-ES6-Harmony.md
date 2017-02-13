@@ -3,7 +3,7 @@ title: 'Holy Babel! Praise the ES6 Harmony.'
 date: 2016-03-24 16:04:28
 tags: JavaScript
 layout: Post
-hero: http://www.ruanyifeng.com/blogimg/asset/2016/bg2016012501.png
+hero: ../../assets/babel.png
 ---
 
 **ECMAScript6** 簡稱 **ES6** 或 **ES2015** 是 JavaScript 在 2015 年的最新進化，從前 js 都常被開發者們調侃是一個不好的語言，現在雖然當然還不夠好，但在持續的進化的過程中，每年推出新的 spec 的進度應該過不了多久就會成為超夢了吧～
