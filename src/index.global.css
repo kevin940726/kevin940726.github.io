@@ -117,3 +117,24 @@ img {
   image-orientation: from-image;
   /* fix the orientation not match to the source image */
 }
+
+pre {
+  margin: 20px 0;
+
+  /* overwrite inline code style */
+  & code {
+    background-color: none;
+    padding: 0;
+  }
+}
+
+code {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-family: 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+  /* inline code style */
+  background-color: #F8F8F8;
+  padding: 0.2em;
+}
