@@ -28,7 +28,9 @@ class ProgressiveImage extends Component {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    if (this.props.isParallax) {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
   }
 
   handleScroll = () => {
@@ -46,7 +48,7 @@ class ProgressiveImage extends Component {
   handleBind = ref => {
     this.imgRef = ref;
 
-    if (this.imgRef.complete) {
+    if (this.imgRef && this.imgRef.complete) {
       this.handleLoad();
     }
     // handling cached image,
