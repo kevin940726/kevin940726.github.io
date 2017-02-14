@@ -4,6 +4,15 @@
   font-size: 3rem;
   margin: auto 2em;
   position: absolute;
+
+  @media (--mobile) {
+    margin: auto 20px;
+    font-size: 1.5rem;
+
+    & > span {
+      white-space: nowrap;
+    }
+  }
 }
 
 .container {
@@ -16,6 +25,10 @@
   padding: 2em 5em;
   box-sizing: border-box;
   max-width: var(--maxWidth);
+
+  @media (--mobile) {
+    padding: 20px;
+  }
 }
 
 .blockquote {

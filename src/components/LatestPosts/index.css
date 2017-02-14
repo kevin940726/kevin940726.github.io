@@ -1,3 +1,7 @@
 .latestPosts {
   text-align: center;
+
+  @media (--mobile) {
+    text-align: left;
+  }
 }

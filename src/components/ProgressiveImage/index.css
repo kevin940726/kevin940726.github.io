@@ -37,6 +37,10 @@
   & img:last-of-type {
     position: absolute;
   }
+
+  @media (--mobile) {
+    height: 250px;
+  }
 }
 
 .img {

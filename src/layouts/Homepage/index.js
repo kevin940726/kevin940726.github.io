@@ -51,7 +51,8 @@ const Homepage = () => (
       isCover
       >
       <p className={styles.coverTitle}>
-        {'I am a <Front-End Developer/>'}
+        {'I am a '}
+        <span>{'<Front-End Developer/>'}</span>
       </p>
     </ProgressiveImage>
 

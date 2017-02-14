@@ -16,6 +16,11 @@ module.exports = config => [
           colorText: '#555',
           colorInfo: '#3273dc'
         }
+      },
+      customMedia: {
+        extensions: {
+          '--mobile': '(max-width: 767px)'
+        }
       }
     }
   }),
