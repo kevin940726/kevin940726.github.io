@@ -25,15 +25,10 @@ if (typeof window !== 'undefined') {
   // https://github.com/googleanalytics/autotrack
 
   // most important plugin for phenomic
-  require('autotrack/lib/plugins/url-change-tracker');
+  require('autotrack/autotrack.js');
   ga('require', 'urlChangeTracker');
-
-  // some plugins you might like
-  require('autotrack/lib/plugins/clean-url-tracker');
   ga('require', 'cleanUrlTracker');
-  require('autotrack/lib/plugins/outbound-form-tracker');
   ga('require', 'outboundFormTracker');
-  require('autotrack/lib/plugins/outbound-link-tracker');
   ga('require', 'outboundLinkTracker');
 
   // check out more here https://github.com/googleanalytics/autotrack#plugins
