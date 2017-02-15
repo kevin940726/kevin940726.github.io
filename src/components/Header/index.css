@@ -52,8 +52,7 @@
   border-bottom: 1px solid transparent;
   height: 100%;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: inherit;
     opacity: 1;
     text-decoration: none;
@@ -86,7 +85,6 @@
   align-items: center;
   color: var(--colorSecondary);
 
-  &:focus,
   &:hover {
     text-decoration: none;
     background-color: color(var(--colorSecondary) a(50%));
