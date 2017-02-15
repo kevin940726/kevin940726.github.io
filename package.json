@@ -89,6 +89,11 @@
       }
     }
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ],
   "xo": {
     "parser": "babel-eslint",
     "extends": "xo-react",

@@ -2,8 +2,10 @@
   z-index: 10;
   color: #FFF;
   font-size: 3rem;
-  margin: auto 2em;
   position: absolute;
+  top: 50%;
+  margin: auto 2em;
+  transform: translateY(-50%);
 
   @media (--mobile) {
     margin: auto 20px;
