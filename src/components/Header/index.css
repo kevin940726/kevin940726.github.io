@@ -3,13 +3,15 @@
 }
 
 .header {
-  position: absolute;
+  position: fixed;
   /* stretch */
   left: 0;
   right: 0;
   top: 0;
-  color: #FFF;
+  color: var(--colorText);
   z-index: 100;
+  background-color: color(#FFF a(90%));
+  border-bottom: 1px solid #EEEE;
 
   &:after {
     content: '';
@@ -25,7 +27,6 @@
   margin: 0 auto;
   padding: 0;
   height: 60px;
-  text-shadow: 0 0 10px var(--colorPrimaryDark), 0 0 6px var(--colorNeutralDark), 0 0 2px var(--colorNeutralDark);
 
   @media (--mobile) {
     width: 100%;
@@ -81,10 +82,10 @@
   padding: 0 20px;
   text-decoration: none;
   transition: all 0.15s;
-  color: #FFF;
   height: 100%;
   display: flex;
   align-items: center;
+  color: var(--colorSecondary);
 
   &:focus,
   &:hover {

@@ -3,4 +3,9 @@
   display: flex;
   align-items: stretch;
   flex-direction: column;
+  margin-top: 60px;
+
+  @media (--mobile) {
+    margin-top: 50px;
+  }
 }

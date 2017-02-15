@@ -138,3 +138,9 @@ code {
   background-color: #F8F8F8;
   padding: 0.2em;
 }
+
+@media (--mobile) {
+  :global(.hideIfMobile) {
+    display: none !important;
+  }
+}

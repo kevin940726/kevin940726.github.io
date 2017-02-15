@@ -25,7 +25,7 @@ const Header = (props, { metadata: { pkg, github } }) => (
             className={styles.link}
             >
             <Svg svg={gitHubSvg} cleanup/>
-            { 'GitHub' }
+            <span className="hideIfMobile">{ 'GitHub' }</span>
           </a>
         }
       </div>
