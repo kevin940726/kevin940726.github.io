@@ -24,6 +24,7 @@
 
   @media (--mobile) {
     flex-direction: column;
+    flex-basis: auto;
 
     &:nth-of-type(2n) .img {
       order: 0;
