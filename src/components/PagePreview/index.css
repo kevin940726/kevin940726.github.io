@@ -19,14 +19,10 @@
 }
 
 .title {
-  align-self: center;
+  align-self: flex-start;
   font-size: 1.4rem;
   font-weight: 900;
-  margin-bottom: 1em;
-
-  @media (--mobile) {
-    margin-bottom: 0.5em;
-  }
+  margin-bottom: 0.5em;
 }
 
 .meta {
@@ -39,7 +35,6 @@
 }
 
 .readMore {
-  /* align-self: center; */
   display: inline-flex;
   margin-top: 1rem;
   border-radius: 3px;
