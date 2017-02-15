@@ -5,6 +5,7 @@ module.exports = config => [
       customProperties: {
         variables: {
           maxWidth: '60rem',
+          navHeight: '50px',
           colorPrimaryDark: '#107491',
           colorPrimary: '#007acc',
           colorSecondaryDark: '#22846C',

@@ -18,7 +18,7 @@ const Footer = () => (
           </span>
         </a>
       </span>
-      <span className={styles.hideIfMobile}>{' / '}</span>
+      <span className="hideIfMobile">{' / '}</span>
       <span>{'© 2017 Kai Hao, unless otherwise noted.'}</span>
     </p>
   </footer>

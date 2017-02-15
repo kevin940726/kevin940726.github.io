@@ -24,9 +24,3 @@
 .phenomicReferenceName {
   font-weight: 100;
 }
-
-.hideIfMobile {
-  @media (--mobile) {
-    display: none !important;
-  }
-}
