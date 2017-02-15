@@ -18,6 +18,7 @@ const Header = (props, { metadata: { pkg, github } }) => (
         </Link>
       </div>
       <div className={styles.navPart2}>
+        <Link className={styles.link} to={'/blog'}>Blog</Link>
         {
           github &&
           <a
