@@ -58,14 +58,14 @@ const Homepage = () => (
       <p className={styles.coverTitle}>
         <img className={styles.avatar} src={avatar} alt="Kai Hao"/>
         {'I am a '}
-        <span>{'<Front-End Developer/>'}</span>
+        <span>{'<Front-End Web Developer/>'}</span>
       </p>
     </ProgressiveImage>
 
     <div className={styles.container}>
       <h2>About</h2>
       <p>
-        {'Hi, I am Kai Hao, a front-end developer in Taiwan'}
+        {'Hi, I am Kai Hao, a front-end web developer in Taiwan'}
         <Emoji text="smile"/>
         {'.'}
       </p>
