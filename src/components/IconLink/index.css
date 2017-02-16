@@ -1,0 +1,26 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4em 1em;
+  background-color: #FFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .16), 0 1px 2px rgba(0, 0, 0, .23);
+  color: var(--colorText);
+  white-space: nowrap;
+  margin: 0.3em 0;
+
+  & > span:first-of-type {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.3em;
+  }
+
+  & svg {
+    height: 1em;
+    width: 1em;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+    text-decoration: none;
+  }
+}

@@ -7,11 +7,17 @@ import LatestPosts from '../../components/LatestPosts';
 import Emoji from '../../components/Emoji';
 import Tag from '../../components/Tag';
 import Experience from '../../components/Experience';
+import IconLink from '../../components/IconLink';
 
 import Work from '../Work';
 
 import cover from '../../assets/photos/IMG_0585.jpg';
 import coverResponsive from '!responsive?sizes[]=50w!../../assets/photos/IMG_0585.jpg';
+import iconGithub from '../../assets/icons/iconmonstr-github-1.svg';
+import iconCodePen from '../../assets/icons/codepen.svg';
+import iconStackOverflow from '../../assets/icons/stackoverflow.svg';
+import iconFacebook from '../../assets/icons/facebook.svg';
+import iconLinkedin from '../../assets/icons/linkedin.svg';
 
 import metadata from '../../metadata';
 
@@ -106,6 +112,8 @@ const Homepage = () => (
         <Tag text="redux"/>{', '}
         <Tag text="babel"/>{', '}
         <Tag text="postcss"/>{', '}
+        <Tag text="eslint"/>{', '}
+        <Tag text="stylelint"/>{', '}
         <Tag text="flow"/>{', '}
         <Tag text="ava"/>{'...'}
       </p>
@@ -122,6 +130,15 @@ const Homepage = () => (
         <Tag text="C++"/>{', '}
         <Tag text="arduino"/>{', '}
         <Tag text="LaTeX"/>{'...'}
+      </p>
+
+      <p>
+        {'Find me at:'}<br/>
+        <IconLink href="https://github.com/kevin940726" icon={iconGithub}>Github</IconLink>{' , '}
+        <IconLink href="https://codepen.io/kevin940726" icon={iconCodePen}>CodePen</IconLink>{' , '}
+        <IconLink href="https://stackoverflow.com/users/4699228/kai-hao" icon={iconStackOverflow}>Stack Overflow</IconLink>{' , '}
+        <IconLink href="https://fb.me/kevin940726" icon={iconFacebook}>Facebook</IconLink>{' , '}
+        <IconLink href="https://www.linkedin.com/in/kai-hao" icon={iconLinkedin}>Linkedin</IconLink>
       </p>
 
       <div>
