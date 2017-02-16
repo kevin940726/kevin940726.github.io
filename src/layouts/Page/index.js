@@ -24,7 +24,7 @@ const Page = (
     children
   },
   {
-    metadata: { pkg }
+    metadata: { pkg, avatar }
   }
 ) => {
   warning(
@@ -34,7 +34,7 @@ const Page = (
 
   const metaTitle = `${head.metaTitle ? head.metaTitle : head.title} - ${pkg.title}`;
 
-  let socialImage = joinUri(process.env.PHENOMIC_USER_URL, cover);
+  let socialImage = avatar;
   if (head.hero) {
     socialImage = head.hero.match('://') ? head.hero :
       joinUri(process.env.PHENOMIC_USER_URL, head.hero);

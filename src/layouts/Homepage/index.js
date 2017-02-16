@@ -1,6 +1,5 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { joinUri } from 'phenomic';
 
 import ProgressiveImage from '../../components/ProgressiveImage';
 import LatestPosts from '../../components/LatestPosts';
@@ -23,9 +22,7 @@ import metadata from '../../metadata';
 
 import styles from './index.css';
 
-const { pkg } = metadata;
-
-const avatar = 'https://avatars3.githubusercontent.com/u/7753001';
+const { pkg, avatar } = metadata;
 
 const meta = [
   { property: 'og:type', content: 'profile' },
@@ -34,13 +31,13 @@ const meta = [
     property: 'og:url',
     content: pkg.homepage
   },
-  { property: 'og:image', content: joinUri(process.env.PHENOMIC_USER_URL, cover) },
+  { property: 'og:image', content: avatar },
   { property: 'og:description', content: pkg.description },
   { name: 'twitter:card', content: 'summary' },
   { name: 'twitter:title', content: pkg.title },
   { name: 'twitter:creator', content: `@${pkg.twitter}` },
   { name: 'twitter:description', content: pkg.description },
-  { name: 'twitter:image', content: cover },
+  { name: 'twitter:image', content: avatar },
   { name: 'description', content: pkg.description }
 ];
 
