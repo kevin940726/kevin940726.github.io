@@ -19,6 +19,8 @@ import styles from './index.css';
 
 const { pkg } = metadata;
 
+const avatar = 'https://avatars3.githubusercontent.com/u/7753001';
+
 const meta = [
   { property: 'og:type', content: 'profile' },
   { property: 'og:title', content: pkg.title },
@@ -51,6 +53,7 @@ const Homepage = () => (
       isCover
       >
       <p className={styles.coverTitle}>
+        <img className={styles.avatar} src={avatar} alt="Kai Hao"/>
         {'I am a '}
         <span>{'<Front-End Developer/>'}</span>
       </p>

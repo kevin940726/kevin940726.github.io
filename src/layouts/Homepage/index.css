@@ -3,16 +3,31 @@
   font-size: 3rem;
   position: absolute;
   top: 50%;
-  margin: auto 2em;
+  margin: auto;
   transform: translateY(-50%);
   color: var(--colorNeutralLight);
   text-shadow: 0 0 10px var(--colorPrimaryDark), 0 0 6px var(--colorNeutralDark), 0 0 2px var(--colorNeutralDark);
   letter-spacing: 1px;
   text-align: center;
+  width: 100%;
+  padding: 0 2em;
+
+  & > .avatar {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    position: relative !important;
+    display: block;
+
+    @media (--mobile) {
+      height: 120px;
+      width: 120px;
+    }
+  }
 
   @media (--mobile) {
-    margin: auto 20px;
     font-size: 1.5rem;
+    padding: 0 20px;
 
     & > span {
       white-space: nowrap;
