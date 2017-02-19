@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'phenomic';
+import dateFns from 'date-fns';
 
 import Button from '../../components/Button';
 
@@ -17,7 +18,7 @@ const PagePreview = ({ __url, title, date, description }) => {
         {
           pageDate &&
             <time key={pageDate.toISOString()}>
-              { pageDate.toDateString() }
+              { dateFns.format(pageDate, 'YYYY/MM/DD') }
             </time>
         }
       </div>
