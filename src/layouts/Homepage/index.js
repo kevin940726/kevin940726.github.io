@@ -65,17 +65,28 @@ const Homepage = () => (
     <div className={styles.container}>
       <h2>About</h2>
       <p>
-        {'Hi, I am Kai Hao, a front-end web developer in Taiwan'}
+        {'Hi'}
+        <Emoji text="wave"/>
+        {', I am Kai Hao, a front-end web developer in Taiwan.'}
         <Emoji text="smile"/>
+      </p>
+
+      <p>
+        {`I love JavsScript and like to learn from the open source community. Huge React (or it's concept`}
+        <Emoji text="smirk"/>
+        {`) lover, but also willing to get out of comfort zone whenever needed`}
+        <Emoji text="muscle"/>
         {'.'}
       </p>
 
       <p>
-        {'I create amazing website which is highly scalable and maintainable. Use cutting-edge technology and open source libraries to stay relevant. Focus on details, have great sense about UI/UX.'}
-      </p>
-
-      <p>
-        {`React (or it's concept) lover, write clean and maintainable code, willing to take challenge, dream about working on a project that have many users world wide.`}
+        {`Focus on improving web front-end skills while maintainability, scalability, testability, and accessibility are my primary concerns. Interested in using new technologies`}
+        <Emoji text="sparkles"/>
+        {` and open source libraries to stay relevant. Focus on details`}
+        <Emoji text="mag"/>
+        {`, have great sense about UI/UX. My long-term goal is to be a part of a world-class`}
+        <Emoji text="earth_asia"/>
+        {` project.`}
       </p>
 
       <p>
