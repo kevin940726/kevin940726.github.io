@@ -13,6 +13,8 @@
     display: inline-flex;
     align-items: center;
     margin-right: 0.3em;
+    height: 1em;
+    width: 1em;
 
     @media (--mobile) {
       margin-right: 0;

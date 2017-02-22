@@ -39,4 +39,8 @@
 .date {
   color: var(--colorNeutral);
   font-size: 0.75em;
+
+  @media (--mobile) {
+    display: block;
+  }
 }
