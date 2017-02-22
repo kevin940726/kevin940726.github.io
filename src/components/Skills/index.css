@@ -1,0 +1,34 @@
+.list {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill {
+  display: flex;
+  margin-bottom: 10px;
+
+  @media (--mobile) {
+    flex-direction: column;
+  }
+}
+
+.title {
+  text-align: right;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 25%;
+  padding-right: 20px;
+  font-weight: bold;
+
+  @media (--mobile) {
+    text-align: left;
+    padding: 0;
+  }
+}
+
+.items {
+  text-align: left;
+  font-size: 0.9em;
+}

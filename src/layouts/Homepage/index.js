@@ -7,6 +7,8 @@ import Emoji from '../../components/Emoji';
 import Tag from '../../components/Tag';
 import Experience from '../../components/Experience';
 import IconLink from '../../components/IconLink';
+import Skills from '../../components/Skills';
+import ColoredH2 from '../../components/ColoredH2';
 
 import Work from '../Work';
 
@@ -58,45 +60,54 @@ const Homepage = () => (
       <p className={styles.coverTitle}>
         <img className={styles.avatar} src={avatar} alt="Kai Hao"/>
         {'I am a '}
-        <span>{'<Front-End Web Developer/>'}</span>
+        <span className={styles.pre}>{'<Front-End Web Developer/>'}</span>
+        <span className={styles.buttonGroup}>
+          <IconLink href="https://github.com/kevin940726" icon={iconGithub}>Github</IconLink>
+          <IconLink href="https://codepen.io/kevin940726" icon={iconCodePen}>CodePen</IconLink>
+          <IconLink href="https://stackoverflow.com/users/4699228/kai-hao" icon={iconStackOverflow}>Stack Overflow</IconLink>
+          <IconLink href="https://fb.me/kevin940726" icon={iconFacebook}>Facebook</IconLink>
+          <IconLink href="https://www.linkedin.com/in/kai-hao" icon={iconLinkedin}>Linkedin</IconLink>
+        </span>
       </p>
     </ProgressiveImage>
 
     <div className={styles.container}>
-      <h2>About</h2>
-      <p>
-        {'Hi'}
-        <Emoji text="wave"/>
-        {', I am Kai Hao, a front-end web developer in Taiwan.'}
-        <Emoji text="smile"/>
-      </p>
+      <section>
+        <ColoredH2>About</ColoredH2>
+        <p>
+          {'Hi'}
+          <Emoji text="wave"/>
+          {', I am Kai Hao, a front-end web developer in Taiwan.'}
+          <Emoji text="smile"/>
+        </p>
 
-      <p>
-        {`I love JavsScript and like to learn from the open source community. Huge React (or it's concept`}
-        <Emoji text="smirk"/>
-        {`) lover, but also willing to get out of comfort zone whenever needed`}
-        <Emoji text="muscle"/>
-        {'.'}
-      </p>
+        <p>
+          {`I love JavsScript and like to learn from the open source community. Huge React (or it's concept`}
+          <Emoji text="smirk"/>
+          {`) lover, but also willing to get out of comfort zone whenever needed`}
+          <Emoji text="muscle"/>
+          {'.'}
+        </p>
 
-      <p>
-        {`Focus on improving web front-end skills while maintainability, scalability, testability, and accessibility are my primary concerns. Interested in using new technologies`}
-        <Emoji text="sparkles"/>
-        {` and open source libraries to stay relevant. Focus on details`}
-        <Emoji text="mag"/>
-        {`, have great sense about UI/UX. My long-term goal is to be a part of a world-class`}
-        <Emoji text="earth_asia"/>
-        {` project.`}
-      </p>
+        <p>
+          {`Focus on improving web front-end skills while maintainability, scalability, testability, and accessibility are my primary concerns. Interested in using new technologies`}
+          <Emoji text="sparkles"/>
+          {` and open source libraries to stay relevant. Focus on details`}
+          <Emoji text="mag"/>
+          {`, have great sense about UI/UX. My long-term goal is to be a part of a world-class`}
+          <Emoji text="earth_asia"/>
+          {` project.`}
+        </p>
 
-      <p>
-        <a className={styles.blockquote} href="https://www.youtube.com/watch?v=GDpmVUEjagg" target="_blank" rel="noopener noreferrer">
-          {'“Work it harder, make it better, do it faster, make us stronger.” - Daft Punk'}
-        </a>
-      </p>
+        <p>
+          <a className={styles.blockquote} href="https://www.youtube.com/watch?v=GDpmVUEjagg" target="_blank" rel="noopener noreferrer">
+            {'“Work it harder, make it better, do it faster, make us stronger.” - Daft Punk'}
+          </a>
+        </p>
+      </section>
 
-      <p>
-        {'Facts about me:'}<br/>
+      <section>
+        <ColoredH2>Interests</ColoredH2>
         <Tag text="javascript nerd" emoji="computer"/>{', '}
         <Tag text="cat-person" emoji="cat2"/>{', '}
         <Tag text="jogging-lover" emoji="runner"/>{', '}
@@ -105,59 +116,17 @@ const Homepage = () => (
         <Tag text="popping dancer" emoji="dancer"/>{', '}
         <Tag text="twitch gamer" emoji="video_game"/>{', '}
         <Tag text="off-key singer" emoji="microphone"/>{'...'}
-      </p>
+      </section>
 
-      <p>
-        {'Tools/Libraries I use (for now):'}<br/>
-        <Tag text="nuclide"/>{', '}
-        <Tag text="git"/>{', '}
-        <Tag text="macOS"/>{', '}
-        <Tag text="iterm2 (oh my zsh)"/>{', '}
-        <Tag text="slack"/>{', '}
-        <Tag text="webpack"/>{', '}
-        <Tag text="yarn"/>{', '}
-        <Tag text="react"/>{', '}
-        <Tag text="redux"/>{', '}
-        <Tag text="babel"/>{', '}
-        <Tag text="postcss"/>{', '}
-        <Tag text="eslint"/>{', '}
-        <Tag text="stylelint"/>{', '}
-        <Tag text="flow"/>{', '}
-        <Tag text="ava"/>{'...'}
-      </p>
-
-      <p>
-        {'Played with:'}<br/>
-        <Tag text="javascript/node"/>{', '}
-        <Tag text="html5"/>{', '}
-        <Tag text="css3"/>{', '}
-        <Tag text="python"/>{', '}
-        <Tag text="php"/>{', '}
-        <Tag text="C#"/>{', '}
-        <Tag text="R"/>{', '}
-        <Tag text="C++"/>{', '}
-        <Tag text="arduino"/>{', '}
-        <Tag text="LaTeX"/>{'...'}
-      </p>
-
-      <p>
-        {'Find me at:'}<br/>
-        <IconLink href="https://github.com/kevin940726" icon={iconGithub}>Github</IconLink>{' , '}
-        <IconLink href="https://codepen.io/kevin940726" icon={iconCodePen}>CodePen</IconLink>{' , '}
-        <IconLink href="https://stackoverflow.com/users/4699228/kai-hao" icon={iconStackOverflow}>Stack Overflow</IconLink>{' , '}
-        <IconLink href="https://fb.me/kevin940726" icon={iconFacebook}>Facebook</IconLink>{' , '}
-        <IconLink href="https://www.linkedin.com/in/kai-hao" icon={iconLinkedin}>Linkedin</IconLink>
-      </p>
-
-      <div>
-        <h2>Education</h2>
+      <section>
+        <ColoredH2>Education</ColoredH2>
         <Experience date="2012/09 - 2016/06">
           National Taiwan University - Information Management
         </Experience>
-      </div>
+      </section>
 
-      <div>
-        <h2>Experience</h2>
+      <section>
+        <ColoredH2>Experience</ColoredH2>
         <Experience
           subtitle="Mainly responsible for front-end developing."
           date="2015/07 - 2016/08"
@@ -165,12 +134,40 @@ const Homepage = () => (
           {'Full-stack web developer intern in '}
           <a href="http://www.25sprout.com" target="_blank" rel="noreferrer noopener">25sprout</a>
         </Experience>
-      </div>
+      </section>
 
-      <div>
-        <h2>Work</h2>
+      <section>
+        <ColoredH2>Skills</ColoredH2>
+        <Skills
+          skills={[
+            {
+              title: 'Programming',
+              items: ['JavaScript/Node.js', 'HTML5', 'CSS3', 'Python', 'PHP', 'C#', 'R', 'C++', 'Arduino', 'LaTeX']
+            },
+            {
+              title: 'Web',
+              items: ['React', 'React Router', 'Redux', 'jQuery', 'RxJS', 'Immutable.js', 'Lodash', 'Electron', 'Express', 'Firebase', 'Socket.io', 'D3.js', 'Polymer']
+            },
+            {
+              title: 'Tools',
+              items: ['Babel/ES6+', 'React Storybook', 'AVA', 'Mocha', 'PostCSS', 'SASS', 'Webpack', 'Gulp', 'ESlint', 'Stylelint']
+            },
+            {
+              title: 'Environment',
+              items: ['macOS', 'iTerm2 (oh my zsh)', 'Nuclide', 'Git', 'Yarn', 'Slack']
+            },
+            {
+              title: 'Languages',
+              items: ['Mandarin', 'English']
+            }
+          ]}
+          />
+      </section>
+
+      <section>
+        <ColoredH2>Work</ColoredH2>
         <Work/>
-      </div>
+      </section>
 
       <LatestPosts/>
     </div>

@@ -11,7 +11,7 @@ const IconLink = ({ icon, href, children }) => (
     className={styles.link}
     >
     <Svg svg={icon} cleanup cleanupExceptions={['fill']}/>
-    {children}
+    <span className={styles.name}>{children}</span>
   </a>
 );
 

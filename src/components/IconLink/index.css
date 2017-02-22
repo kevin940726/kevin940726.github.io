@@ -7,11 +7,16 @@
   color: var(--colorText);
   white-space: nowrap;
   margin: 0.3em 0;
+  transition: box-shadow 0.15s ease-out;
 
   & > span:first-of-type {
     display: inline-flex;
     align-items: center;
     margin-right: 0.3em;
+
+    @media (--mobile) {
+      margin-right: 0;
+    }
   }
 
   & svg {
@@ -22,5 +27,17 @@
   &:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     text-decoration: none;
+  }
+
+  @media (--mobile) {
+    border-radius: 50%;
+    padding: 10px;
+    margin: 0.3em 5px 5px;
+    justify-content: center;
+    align-items: center;
+
+    & .name {
+      display: none;
+    }
   }
 }
