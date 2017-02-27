@@ -18,7 +18,7 @@ class ProgressiveImage extends Component {
   imgRef = null;
 
   componentDidMount() {
-    if (this.props.isParallax) {
+    if (this.props.isParallax && window.innerWidth > 767) {
       window.requestAnimationFrame = window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -28,7 +28,7 @@ class ProgressiveImage extends Component {
     }
   }
   componentWillUnmount() {
-    if (this.props.isParallax) {
+    if (this.props.isParallax && window.innerWidth > 767) {
       window.removeEventListener('scroll', this.handleScroll);
     }
   }
