@@ -1,12 +1,11 @@
+/* eslint-disable */
 import path from 'path';
 
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import {phenomicLoader} from 'phenomic';
-import PhenomicLoaderFeedWebpackPlugin
-  from 'phenomic/lib/loader-feed-webpack-plugin';
-import PhenomicLoaderSitemapWebpackPlugin
-  from 'phenomic/lib/loader-sitemap-webpack-plugin';
+import { phenomicLoader } from 'phenomic';
+import PhenomicLoaderFeedWebpackPlugin from 'phenomic/lib/loader-feed-webpack-plugin';
+import PhenomicLoaderSitemapWebpackPlugin from 'phenomic/lib/loader-sitemap-webpack-plugin';
 
 import pkg from './package.json';
 
@@ -14,80 +13,68 @@ export default (config = {}) => {
   // hot loading for postcss config
   // until this is officially supported
   // https://github.com/postcss/postcss-loader/issues/66
-	const postcssPluginFile = require.resolve('./postcss.config.js');
-	const postcssPlugins = webpackInstance => {
-		webpackInstance.addDependency(postcssPluginFile);
-		delete require.cache[postcssPluginFile];
-		return require(postcssPluginFile)(config);
-	};
+  const postcssPluginFile = require.resolve('./postcss.config.js');
+  const postcssPlugins = webpackInstance => {
+    webpackInstance.addDependency(postcssPluginFile);
+    delete require.cache[postcssPluginFile];
+    return require(postcssPluginFile)(config);
+  };
 
-	return {
-		...config.dev && {
-			devtool: '#cheap-module-eval-source-map'
-		},
-		module: {
-			noParse: /\.min\.js/,
+  return {
+    ...(config.dev && { devtool: '#cheap-module-eval-source-map' }),
+    module: {
+      noParse: /\.min\.js/,
       // webpack 1
-			loaders: [
-      // webpack 2
-      /*
+      loaders: [
+        // webpack 2
+        /*
       rules: [
       */
         // *.md => consumed via phenomic special webpack loader
         // allow to generate collection and rss feed.
-				{
+        {
           // phenomic requirement
-					test: /\.(md|markdown)$/,
-					loader: phenomicLoader,
-					query: {
-						context: path.join(__dirname, config.source),
+          test: /\.(md|markdown)$/,
+          loader: phenomicLoader,
+          query: {
             // plugins: [
             //   ...require("phenomic/lib/loader-preset-markdown").default
             // ]
             // see https://phenomic.io/docs/usage/plugins/
-					}
-				},
-
+            context: path.join(__dirname, config.source)
+          }
+        },
         // *.json => like in node, return json
         // (not handled by webpack by default)
-				{
-					test: /\.json$/,
-					loader: 'json-loader'
-				},
-
+        { test: /\.json$/, loader: 'json-loader' },
         // *.js => babel + eslint
-				{
-					test: /\.js$/,
-					include: [
-						path.resolve(__dirname, 'scripts'),
-						path.resolve(__dirname, 'src')
-					],
-					loaders: [
-						'babel-loader?cacheDirectory'
-					]
-				},
-
+        {
+          test: /\.js$/,
+          include: [
+            path.resolve(__dirname, 'scripts'),
+            path.resolve(__dirname, 'src')
+          ],
+          loaders: [ 'babel-loader?cacheDirectory' ]
+        },
         // ! \\
         // by default *.css files are considered as CSS Modules
         // And *.global.css are considered as global (normal) CSS
-
         // *.css => CSS Modules
-				{
-					test: /\.css$/,
-					exclude: /\.global\.css$/,
-					include: path.resolve(__dirname, 'src'),
+        {
+          test: /\.css$/,
+          exclude: /\.global\.css$/,
+          include: path.resolve(__dirname, 'src'),
           // webpack 1
-					loader: ExtractTextPlugin.extract(
-            'style-loader',
-[`css-loader?modules&localIdentName=${
-              config.production ?
-              '[hash:base64:5]' :
-              '[path][name]--[local]--[hash:base64:5]'
-              }`,
-	'postcss-loader'
-].join('!'),
-          )
           // webpack 2
+          loader: ExtractTextPlugin.extract(
+            'style-loader',
+            [
+              `css-loader?modules&localIdentName=${config.production
+                ? '[hash:base64:5]'
+                : '[path][name]--[local]--[hash:base64:5]'}`,
+              'postcss-loader'
+            ].join('!')
+          )
           /*
           loader: ExtractTextPlugin.extract({
             fallbackLoader: "style-loader",
@@ -113,17 +100,17 @@ export default (config = {}) => {
             ],
           }),
           */
-				},
+        },
         // *.global.css => global (normal) css
-				{
-					test: /\.global\.css$/,
-					include: path.resolve(__dirname, 'src'),
+        {
+          test: /\.global\.css$/,
+          include: path.resolve(__dirname, 'src'),
           // webpack 1
-					loader: ExtractTextPlugin.extract(
-            'style-loader',
-            ['css-loader', 'postcss-loader'].join('!'),
-          )
           // webpack 2
+          loader: ExtractTextPlugin.extract(
+            'style-loader',
+            [ 'css-loader', 'postcss-loader' ].join('!')
+          )
           /*
           loader: ExtractTextPlugin.extract({
             fallbackLoader: "style-loader",
@@ -139,7 +126,7 @@ export default (config = {}) => {
             ],
           }),
           */
-				},
+        },
         // ! \\
         // If you want global CSS only, just remove the 2 sections above
         // and use the following one
@@ -192,51 +179,40 @@ export default (config = {}) => {
         //
         // LESS: npm install --save-dev less less-loader
         // https://github.com/webpack/less-loader
-
         // copy assets and return generated path in js
-				{
-					test: /\.(html|ico|eot|otf|ttf|woff|woff2)$/,
-					loader: 'file-loader',
-					query: {
-						name: '[path][name].[hash].[ext]',
-						context: path.join(__dirname, config.source)
-					}
-				},
-
+        {
+          test: /\.(html|ico|eot|otf|ttf|woff|woff2)$/,
+          loader: 'file-loader',
+          query: {
+            name: '[path][name].[hash].[ext]',
+            context: path.join(__dirname, config.source)
+          }
+        },
         // image
         {
           test: /\.(jpe?g|png|gif|webp)$/,
-					loaders: [
-            `file-loader?name=[path][name].[hash].[ext]&context=${path.join(__dirname, config.source)}`
+          loaders: [
+            `file-loader?name=[path][name].[hash].[ext]&context=${path.join(
+              __dirname,
+              config.source
+            )}`
           ]
         },
-
         // svg as raw string to be inlined
-				{
-					test: /\.svg$/,
-					loader: 'raw-loader'
-				}
-			],
-
+        { test: /\.svg$/, loader: 'raw-loader' }
+      ],
       preLoaders: [
         // image compression
         {
           test: /\.(jpe?g|png|gif|webp)$/,
-					loader: 'image-webpack-loader',
-					query: {
-            mozjpeg: {
-              progressive: true,
-              quality: 50
-            }
-					}
-        },
+          loader: 'image-webpack-loader',
+          query: { mozjpeg: { progressive: true, quality: 50 } }
+        }
       ]
-		},
-
+    },
     // webpack 1
-		postcss: postcssPlugins,
-
-		plugins: [
+    postcss: postcssPlugins,
+    plugins: [
       // webpack 2
       /*
       // You should be able to remove the block below when the following
@@ -255,33 +231,25 @@ export default (config = {}) => {
         },
       }),
       */
-
-			new PhenomicLoaderFeedWebpackPlugin({
+      new PhenomicLoaderFeedWebpackPlugin({
         // here you define generic metadata for your feed
-				feedsOptions: {
-					title: pkg.name,
-					site_url: pkg.homepage
-				},
-				feeds: {
+        feedsOptions: { title: pkg.name, site_url: pkg.homepage },
+        feeds: {
           // here we define one feed, but you can generate multiple, based
           // on different filters
-					'feed.xml': {
-						collectionOptions: {
-							filter: {layout: 'Post'},
-							sort: 'date',
-							reverse: true,
-							limit: 20
-						}
-					}
-				}
-			}),
-
-			new PhenomicLoaderSitemapWebpackPlugin({
-				site_url: pkg.homepage
-			}),
-
+          'feed.xml': {
+            collectionOptions: {
+              filter: { layout: 'Post' },
+              sort: 'date',
+              reverse: true,
+              limit: 20
+            }
+          }
+        }
+      }),
+      new PhenomicLoaderSitemapWebpackPlugin({ site_url: pkg.homepage }),
       // webpack 1
-			new ExtractTextPlugin('[name].[hash].css', {disable: config.dev}),
+      new ExtractTextPlugin('[name].[hash].css', { disable: config.dev }),
       // webpack 2
       /*
       new ExtractTextPlugin({
@@ -289,33 +257,28 @@ export default (config = {}) => {
         disable: config.dev,
       }),
       */
-
-			...config.production && [
-        // webpack 2
-        // DedupePlugin does not work correctly with Webpack 2, yet ;)
-        // https://github.com/webpack/webpack/issues/2644
-				new webpack.optimize.DedupePlugin(),
-				new webpack.optimize.UglifyJsPlugin(
-          {compress: {warnings: false}}
-        )
-			]
-		],
-
-		output: {
-			path: path.join(__dirname, config.destination),
-			publicPath: config.baseUrl.pathname,
-			filename: '[name].[hash].js'
-		},
-
+      ...(config.production && [
+          // webpack 2
+          // DedupePlugin does not work correctly with Webpack 2, yet ;)
+          // https://github.com/webpack/webpack/issues/2644
+          new webpack.optimize.DedupePlugin(),
+          new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+        ])
+    ],
+    output: {
+      path: path.join(__dirname, config.destination),
+      publicPath: config.baseUrl.pathname,
+      filename: '[name].[hash].js'
+    },
     // webpack 1
-		resolve: {
-			extensions: ['.js', '.json', ''],
-			root: [path.join(__dirname, 'node_modules')]
-		},
-		resolveLoader: {root: [path.join(__dirname, 'node_modules')]}
+    resolve: {
+      extensions: [ '.js', '.json', '' ],
+      root: [ path.join(__dirname, 'node_modules') ]
+    },
     // webpack 2
+    resolveLoader: { root: [ path.join(__dirname, 'node_modules') ] }
     /*
     resolve: { extensions: [ ".js", ".json" ] },
     */
-	};
-};
+  };
+}
