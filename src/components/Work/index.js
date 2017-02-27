@@ -3,8 +3,8 @@ import Svg from 'react-svg-inline';
 
 import metadata from '../../metadata';
 
-import WorkPreview from '../../components/WorkPreview';
-import Emoji from '../../components/Emoji';
+import WorkPreview from '../WorkPreview';
+import Emoji from '../Emoji';
 
 import gitHubSvg from '../../assets/icons/iconmonstr-github-1.svg';
 import BeanfunLoginImg from '../../assets/BeanfunLogin.jpg';
