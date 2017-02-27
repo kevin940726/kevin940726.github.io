@@ -101,7 +101,7 @@ const Homepage = () => (
 
         <p>
           <a className={styles.blockquote} href="https://www.youtube.com/watch?v=GDpmVUEjagg" target="_blank" rel="noopener noreferrer">
-            {'“Work it harder, make it better, do it faster, make us stronger.” - Daft Punk'}
+            {'“Work it harder, make it better, do it faster, makes us stronger.” - Daft Punk'}
           </a>
         </p>
       </section>
