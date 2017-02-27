@@ -1,3 +1,4 @@
+/* eslint-disable*/
 module.exports = config => [
   require('stylelint')(),
   require('postcss-cssnext')({
