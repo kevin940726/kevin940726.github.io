@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[portfolio]]></title><description><![CDATA[portfolio]]></description><link>https://kevin940726.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 05 Mar 2017 07:36:54 GMT</lastBuildDate><atom:link href="https://kevin940726.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Write your commit messages in the right way]]></title><description><![CDATA[<p>要怎麼寫 <code>commit messages</code> 一直是爭論不休的議題，每個 team 有自己偏好的方式，以及所謂的 <em>best practices</em>，像是知名的 <a href="https://gist.github.com/stephenparish/9941e89d80e2bc58a153">AngularJS commit convensions</a>，在這裡我不想討論哪個標準才是最好的，因為實際上還是要根據自己的團隊去選擇適合的標準，只要內部統一了且每個人都能遵守那個規範的話，我覺得沒有必要為了達到完美而拖慢或限制了團隊的步伐。</p>
+<p>說是這麼說⋯⋯但你會想看到這樣的 <code>commit log</code> 嗎？</p>
+<pre><code class="hljs language-bash">[5f25bbe] hide loading-word too
+[3c80512] finally
+[9578933] trying important
+[1f65c26] hide loading wrapper</code></pre>
+<p>沒錯，以前我的 <code>commit</code> 真的是這樣寫給自己看的，但其實實際上現在來看連我自己都看不懂，這樣的 <code>commit messages</code> 沒有任何意義就只是為了 <code>commit</code> 而 <code>commit</code> 而已，對於個人的小專案的話也許還不會有影響，但若是在團隊中的話可是會讓 Code Review 和 Changelog 有很大的困擾。</p>
+<p>所以縱使我並不喜歡 over engineering 的 <code>commit</code> 設計，但裡面有許多實用的大重點是我認為應該要遵守的。</p>
+<h3 id="use-english-whenever-possible"><a href="#use-english-whenever-possible" class="phenomic-HeadingAnchor">#</a>Use English whenever possible</h3>
+<p>盡可能地寫英文。</p>
+<p>「可是我的團隊都是台灣人呀？為什麼 <code>commit messages</code> 不能用自己的母語呢？」你可能會這麼想，但是當你們的專案 open source 以後，來自世界各地的人要怎麼讀懂你們的母語呢？現實上來說英文確實是在工程師之間最廣泛使用的語言，用英文來寫 <code>commit</code> 可以確保有最多的人可以看得懂，就算你們的專案是公司的產品並沒有打算要開源，但誰也不能保證往後的日子哪一天突然就決定要開源了，畢竟連 <a href="https://github.com/chrislgarry/Apollo-11">Apollo 11</a> 都開源了。</p>
+<h3 id="use-the-imperative-mood-in-the-subject-line"><a href="#use-the-imperative-mood-in-the-subject-line" class="phenomic-HeadingAnchor">#</a>Use the imperative mood in the subject line</h3>
+<p>標題使用祈使語句。</p>
+<p>簡單來說就是以現在式動詞為開頭的句子，在這裡不探討文法之類的問題，單純就結構來看祈使句看起來更直接更簡單，直接代表了這個 <code>commit</code> <strong>如果套用後會做什麼</strong>，而不是做了些什麼，用一句英文來表達的話會是像這樣。</p>
+<blockquote>
+<p>If applied, this commit will [<em><strong>commit subject</strong></em>]</p>
+</blockquote>
+<p>將 <code>commit subject</code> 代換成你的 <code>commit</code> 標題後如果能形成一個正確的句子的話就是好的標題。</p>
+<p>另外在標題的最後，也要避免使用句號來做結尾，這在標題的使用上顯得多餘，但若是 <code>commit</code> 的內文的話則寫一般的英文語法即可，不需要使用祈使句也不需要省略句號。</p>
+<h3 id="use-a-list-of-types-to-categorize-the-commit"><a href="#use-a-list-of-types-to-categorize-the-commit" class="phenomic-HeadingAnchor">#</a>Use a list of types to categorize the commit</h3>
+<p>將 <code>commit</code> 歸類於一個種類清單。</p>
+<p>每個 <code>commit</code> 都會有一個主要的目標，而那個目標大致可以歸類在一個種類清單中，一個清單的例子可以是：</p>
+<ul>
+<li><code>Feat</code>: A new feature</li>
+<li><code>Fix</code>: A bug fix</li>
+<li><code>Docs</code>: Documentation only changes</li>
+<li><code>Style</code>: Changes that do not affect the meaning of the code</li>
+<li><code>Refactor</code>: A code change that neither fixes a bug nor adds a feature</li>
+<li><code>Perf</code>: A code change that improves performance</li>
+<li><code>Test</code>: Adding missing tests or correcting existing tests</li>
+</ul>
+<p>清單的選擇可以直接使用社群上現有的清單，也可以自己針對需求去做改變，如此一來整個團隊就有統一的 <code>commit</code> 歸類，在 log 上就可以很清楚看出每個 <code>commit</code> 的種類，在日後產生 changelog 時也很方便。</p>
+<p>找出 <code>commit</code> 的 <code>type</code> 以後，將它放在 <code>commit</code> 標題的前面，像是：</p>
+<blockquote>
+<p>refactor: format and lint code</p>
+</blockquote>
+<p>格式可以自己決定，冒號只是一般的表現方式，後面就接原本 subject 的祈使句。</p>
+<h2 id="commitizen"><a href="#commitizen" class="phenomic-HeadingAnchor">#</a>Commitizen</h2>
+<p>身為開發者，當然是所有東西都可以自動化的話越好，又或者在不同專案中要使用不同的 <code>commit</code> 規則，這時就會需要一些工具來幫忙了。<a href="https://github.com/commitizen/cz-cli">Commitizen</a> 是其中一個相當受歡迎的工具，尤其和 Node.js 的專案相容性很高。</p>
+<h3 id="getting-started"><a href="#getting-started" class="phenomic-HeadingAnchor">#</a>Getting Started</h3>
+<p>首先安裝 <code>Commitizen</code>（或是使用 npm 安裝，以下皆使用 yarn 做示範）。</p>
+<pre><code class="hljs language-bash">yarn global add commitizen
+<span class="hljs-comment"># npm install -g commitizen</span></code></pre>
+<p>之後安裝其中一個 <code>adapter</code>，可以把它當作一種預設的規範，你可以選擇直接使用現有的或是自己寫一個適合團隊的，在這裡我用我自己寫的 <a href="https://github.com/kevin940726/emoji-cz"><code>emoji-cz</code></a> <code>adapter</code> 來做示範，這是一個基於以上我推薦的大原則之下在 subject 前面加上 type 對應的 emoji 的 <code>adapter</code>。</p>
+<pre><code class="hljs language-bash">yarn global add emoji-cz</code></pre>
+<p>接下來指定將 <code>emoji-cz</code> 作為 <code>Commitizen</code> 的 global <code>adapter</code>。</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'{ "path": "emoji-cz" }'</span> > ~/.czrc</code></pre>
+<p>完成後往後的 <code>commit</code> 都用 <code>git cz</code> 來取代原本的 <code>git commit</code> 指令。</p>
+<pre><code class="hljs language-text">> git cz
+? <span class="hljs-built_in">Select</span> the <span class="hljs-built_in">type</span> of change that you're committing: (<span class="hljs-keyword">Use</span> arrow keys)
+❯ ✨  Feat:      A <span class="hljs-keyword">new</span> feature
+  🐛  Fix:       A bug fix
+  📚  Docs:      Documentation only changes
+  🎨  Style:     Changes that <span class="hljs-keyword">do</span> <span class="hljs-keyword">not</span> affect the meaning of the <span class="hljs-built_in">code</span>
+  🔨  Refactor:  A <span class="hljs-built_in">code</span> change that neither fixes a bug nor adds a feature
+  🚀  Perf:      A <span class="hljs-built_in">code</span> change that improves performance
+  🚨  Test:      Adding missing tests <span class="hljs-keyword">or</span> correcting existing tests</code></pre>
+<p>以 <code>emoji-cz</code> 為例就會讓你從預設的清單中選擇這次 <code>commit</code> 的 type，之後再輸入標題、內文和 issues 後就會自動產生對應的 <code>commit message</code>。</p>
+<blockquote>
+<p>📚 Docs: update readme to show a simple demo</p>
+</blockquote>
+<h3 id="setup-locally"><a href="#setup-locally" class="phenomic-HeadingAnchor">#</a>Setup locally</h3>
+<p>如果有需求要在不同的 project 使用不同的 <code>adapter</code>，<code>Commitizen</code> 也有提供簡單地設定方式，只要在專案的 <code>package.json</code> 中加入以下：</p>
+<pre><code class="hljs language-json"><span class="hljs-string">"config"</span>: {
+  <span class="hljs-attr">"commitizen"</span>: {
+    <span class="hljs-attr">"path"</span>: <span class="hljs-string">"emoji-cz"</span>
+  }
+}</code></pre>
+<p>在該專案目錄底下的 <code>git cz</code> 也會套用對應的 <code>adapter</code> 了。</p>
+<p>官方文件中提供了許多傑出的 <a href="https://github.com/commitizen/cz-cli#adapters"><code>adapter</code></a> 可供選擇，但你也可以選擇自己寫一個 <code>adapter</code> 來符合自己的需求，任意 fork 一個與自己的架構相似的 <code>adapter</code> 後拿來改寫吧，邏輯非常的簡單而且能夠自定義的地方也很自由，我鼓勵每個人都可以試試看。</p>
+<h3 id="adding-alias"><a href="#adding-alias" class="phenomic-HeadingAnchor">#</a>Adding alias</h3>
+<p>藉由一些 <code>alias</code> 的技巧可以將指令設定的更加符合個人需求，npm script 是最簡單的方式，例如將 <code>commit</code> 的指令加入 <code>package.json</code> 的 <code>scripts</code> 中：</p>
+<pre><code class="hljs language-json"><span class="hljs-string">"scripts"</span>: {
+  <span class="hljs-attr">"commit"</span>: <span class="hljs-string">"git cz"</span>
+}</code></pre>
+<p>或是更簡單的使用 <a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%9F%BA%E7%A4%8E-%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7#Git-%E5%91%BD%E4%BB%A4%E5%88%A5%E5%90%8D"><code>git alias</code></a> 的功能來做全域設定：</p>
+<pre><code class="hljs language-bash">git config --global alias.c cz
+git c <span class="hljs-comment"># equals to 'git cz'</span></code></pre>
+<p>如果想要更進一步防止團隊中的人不小心 <code>commit</code> 了錯誤的格式，可以使用 git hook 像是 <a href="https://github.com/observing/pre-commit"><code>pre-commit</code></a> 來做更進一步的檢查。</p>
+<h2 id="summary"><a href="#summary" class="phenomic-HeadingAnchor">#</a>Summary</h2>
+<p>維護好的 <code>commit</code> 訊息人人有責！以上的原則雖然不是絕對，但遵守多一點點規則卻可以大幅的增加整體訊息的可讀性，希望大家看了以後也可以在自己的專案或是團隊中嘗試導入這些系統。當然如果喜歡我的 <a href="https://github.com/kevin940726/emoji-cz"><code>emoji-cz</code></a> 的風格也不要吝嗇地幫我跟 <a href="https://github.com/commitizen/cz-cli">Commitizen</a> 點個 star 分享給更多人哦～</p>
+<h2 id="reference"><a href="#reference" class="phenomic-HeadingAnchor">#</a>Reference</h2>
+<ul>
+<li><a href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message - Chris Beams</a></li>
+<li><a href="https://gist.github.com/stephenparish/9941e89d80e2bc58a153">AngularJS Git Commit Message Conventions - stephenparish</a></li>
+<li><a href="https://github.com/commitizen/cz-cli">Commitizen</a></li>
+<li><a href="https://github.com/kevin940726/emoji-cz">emoji-cz</a></li>
+</ul>
+]]></description><link>https://kevin940726.github.io/posts/Write-your-commit-messages-in-the-right-way/</link><guid isPermaLink="true">https://kevin940726.github.io/posts/Write-your-commit-messages-in-the-right-way/</guid><pubDate>Sun, 05 Mar 2017 11:56:05 GMT</pubDate></item><item><title><![CDATA[Holy Babel! Praise the ES6 Harmony.]]></title><description><![CDATA[<p><strong>ECMAScript6</strong> 簡稱 <strong>ES6</strong> 或 <strong>ES2015</strong> 是 JavaScript 在 2015 年的最新進化，從前 js 都常被開發者們調侃是一個不好的語言，現在雖然當然還不夠好，但在持續的進化的過程中，每年推出新的 spec 的進度應該過不了多久就會成為超夢了吧～</p>
+<p><strong>ES6</strong> 的最新進化多了好幾個技能可以學，它們讓 js 變得更加好用，這篇介紹主要涵蓋一下我個人認為比較常用、必學的技能，還有一些使用的時機和方式，讓大家都可以偷學幾招存進招式機裡哦！</p>
+<h2 id="prerequirement"><a href="#prerequirement" class="phenomic-HeadingAnchor">#</a>Prerequirement</h2>
+<ul>
+<li>基本 JavaScript 語法</li>
+</ul>
+<h2 id="babel"><a href="#babel" class="phenomic-HeadingAnchor">#</a>Babel</h2>
+<p>雖然 ES6 是 JavaScript 官方的進化，但是瀏覽器們卻還沒有全部跟上，很多功能都還沒加進去，或是根本沒有加任何功能，要想要搶先使用這些功能就必須先將自己的 code 做一些前處理的編譯，於是就出現了目前最受歡迎的編譯器 <a href="https://babeljs.io/">Babel</a>，它除了可以讓你編譯 ES6 的原始碼以外，還可以編譯 ES7 或一些尚還在提案階段的新功能唷！使用前不妨造訪他們的網站吧，doc 我認為寫得相當清楚詳細。</p>
+<p>Babel 在使用的環境和狀況下會有不同的設定方式，以下簡單介紹幾種比較常見的設定方式，其餘在官網都有相當詳盡的說明。</p>
+<h3 id="browser-only"><a href="#browser-only" class="phenomic-HeadingAnchor">#</a>Browser-only</h3>
+<p>假如一開始學習時沒有使用任何的 bundler system 的話，直接用 <code>&#x3C;script></code> tag 也許是最快最方便的一種方式了，使用方式很簡單，直接在 <code>&#x3C;head></code> 加入 CDN。</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">" https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.4.4/babel.min.js"</span>></span><span class="null"></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">script</span>></span></code></pre>
+<p>之後的 script source 都可以直接使用囉！</p>
+<h3 id="nodejs"><a href="#nodejs" class="phenomic-HeadingAnchor">#</a>Node.js</h3>
+<p>如果是後端的環境的話根據使用的情況也會有不同的方式，但最基本的還是直接安裝 <code>babel-cli</code> 就可以立即見效。另外要使用一些 ES6 的功能也要安裝 <code>preset-es2015</code>。</p>
+<pre><code class="hljs language-bash">$ npm install --save-dev babel-cli babel-preset-es2015</code></pre>
+<p>新建一個叫做 <code>.babelrc</code> 的檔案，裡面告訴 Babel 要使用什麼樣的 preset。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// .babelrc</span>
+{ <span class="hljs-string">"presets"</span>: [<span class="hljs-string">"es2015"</span>] }</code></pre>
+<p>之後 <code>babel</code> 指令可以編譯原始碼，<code>babel-node</code> 可以執行原始碼或進入 REPL 模式。</p>
+<pre><code class="hljs language-bash">$ babel src.js -o build.js <span class="hljs-comment"># 將 src.js 編譯成 build.js</span>
+$ babel src/ <span class="hljs-_">-d</span> dist/ -w <span class="hljs-comment"># 將 src 目錄底下的 js 都編譯到 dist 目錄底下，且不斷檢查變更</span>
+$ babel-node src.js <span class="hljs-comment"># 直接編譯並執行 src.js (相當於 node src.js)</span>
+$ babel-node <span class="hljs-comment"># 進入 babel 的 REPL mode (相當於直接執行 node)</span></code></pre>
+<p>其中 <code>babel-node</code> 只適合使用在開發階段，正式上線時還是要使用預先編譯過後的版本。</p>
+<h3 id="bundler"><a href="#bundler" class="phenomic-HeadingAnchor">#</a>Bundler</h3>
+<p>使用像 <code>webpack</code> 或是 <code>browserify</code> 之類的 bundler 時有各式的使用方法，這部分根據使用方式不同會有比較多的變化，請直接參考官網的教學囉 (其實是懶得寫)。</p>
+<h2 id="features"><a href="#features" class="phenomic-HeadingAnchor">#</a>Features</h2>
+<h3 id="arrows-function"><a href="#arrows-function" class="phenomic-HeadingAnchor">#</a>Arrows function</h3>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">bar</span>) </span>{
+    <span class="hljs-comment">// ...</span>
+};
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function">(<span class="hljs-params">bar</span>) =></span> {
+    <span class="hljs-comment">// ...</span>
+};</code></pre>
+<p><strong>Arrows function</strong> 是一個 function 的 short hand 用法，除了簡化 <strong>function</strong> 的用法以外也會把 parent 的 <code>this</code> 正確的傳入 function 中，這是一個相當實用的功能，在很多情況下都非常好用。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">"hello"</span>;
+
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name); <span class="hljs-comment">// undefined</span>
+    }, <span class="hljs-number">1000</span>);
+}
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">"hello"</span>;
+
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =></span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name); <span class="hljs-comment">// hello</span>
+    }, <span class="hljs-number">1000</span>);
+}</code></pre>
+<p>基本的用法簡單上來說是將 <code>function</code> 捨去，並在 arguments 和 function 的開頭 <code>{</code> 之前加入 arrow <code>=></code>，不過其他還有一些簡單的用法分別用在不同的情況。</p>
+<p>arguments 的使用方式：</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =></span> {
+    <span class="hljs-comment">// 沒有 argument 的 function</span>
+};
+
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">bar</span> =></span> {
+    <span class="hljs-comment">// 只有一個 argument 時可以省去括號</span>
+};
+
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function">(<span class="hljs-params">bar, bar2</span>) =></span> {
+    <span class="hljs-comment">// 兩個以上時用 , 隔開</span>
+};</code></pre>
+<p>若沒有太多的步驟要執行，只要簡單的快速回傳值的話可以這麼寫：</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =></span> bar;
+<span class="hljs-comment">// 或</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =></span> (bar);
+<span class="hljs-comment">// 相當於：</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =></span> {
+    <span class="hljs-keyword">return</span> bar;
+};
+
+<span class="hljs-comment">// 若要回傳一個 object 也可以這麼寫</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =></span> ({
+    <span class="hljs-attr">bar</span>: <span class="hljs-string">"bar"</span>
+});
+<span class="hljs-comment">// 相當於：</span>
+<span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =></span> {
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">bar</span>: <span class="hljs-string">"bar"</span>
+    };
+};</code></pre>
+<p>簡單來說若要直接回傳值的話可以用小括號表示或直接省略，若是 object 的話因為直接省略會和 function 的 syntax 衝突，所以外面需要包一層小刮號。</p>
+<p><strong>Arrows function</strong> 在一般情況下非常好用，除了跟 <strong>functional programming</strong> 非常合以外，其他基本上所有的情況都最好使用 <strong>arrows function</strong> 來取代原本的 function。唯一的例外就是當內部的 <code>this</code> 有特別指定是自己的時候用 <strong>arrows function</strong> 會得到錯誤的值，這在一些針對舊式的 jQuery 的套件上滿常見的，這時候直接改用原本的 function syntax 就可以了。</p>
+<h3 id="let--const"><a href="#let--const" class="phenomic-HeadingAnchor">#</a>Let &#x26; Const</h3>
+<p><code>let</code> 和 <code>const</code> 是在宣告變數時新的使用方式，原本的 <code>var</code> 是不夠嚴謹的，所以常常會得到意料之外的結果或 bug，<code>let</code> 只存在於你宣告的 block 裡面，可以解決許多問題。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-keyword">var</span> bar;
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    bar = <span class="hljs-string">"hello"</span>;
+})();
+
+<span class="hljs-keyword">var</span> bar = <span class="hljs-string">"world"</span>;
+
+<span class="hljs-built_in">console</span>.log(bar); <span class="hljs-comment">// world</span>
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">let</span> bar;
+
+{
+    bar = <span class="hljs-string">"hello"</span>;
+};
+
+<span class="hljs-keyword">let</span> bar = <span class="hljs-string">"world"</span>; <span class="hljs-comment">// ERROR! 重複宣告 bar</span></code></pre>
+<p>而 <code>const</code> 顧名思義就是一經宣告後就不變的變數，不允許改變也不允許重複宣告，不過對於 Object 和 Array 還是可以新增 key 或值的，只是一樣無法重複宣告。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> bar = <span class="hljs-string">"foo"</span>; <span class="hljs-comment">// const 宣告時一定要給予其值 (廢話)</span>
+
+bar = <span class="hljs-string">"hello"</span>; <span class="hljs-comment">// ERROR! 改變了 const 變數</span>
+
+<span class="hljs-keyword">const</span> foo = [<span class="hljs-string">"hello"</span>];
+foo.push(<span class="hljs-string">"world"</span>);
+<span class="hljs-built_in">console</span>.log(foo); <span class="hljs-comment">// ["hello", "world"]</span></code></pre>
+<p>至於最佳的使用情況是：<strong>幾乎任何情況，都應該使用 <code>let</code> 來取代 <code>var</code>。</strong> 而且，<strong>唯一的例外是，只要是不曾更改過的定值就優先使用 <code>const</code>。</strong> 簡單來說，所有情況都不應該再出現 <code>var</code> 囉～！<del>RIP <code>var</code> ~2015。</del></p>
+<h3 id="template-strings"><a href="#template-strings" class="phenomic-HeadingAnchor">#</a>Template Strings</h3>
+<p>原本 js 的 string <code>'</code> 和 <code>"</code> 都可以使用，並無什麼不同，但是卻缺少了一些方便好用的功能，而 <strong>Template strings</strong> 的 <code>`</code> 帶來了解決方案。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-keyword">var</span> bar = <span class="hljs-string">"hello"</span>;
+<span class="hljs-keyword">var</span> foo = <span class="hljs-string">"world"</span>;
+<span class="hljs-keyword">var</span> str = bar + <span class="hljs-string">", "</span> + foo + <span class="hljs-string">"!"</span>; <span class="hljs-comment">// hello, world!</span>
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">const</span> bar = <span class="hljs-string">"hello"</span>;
+<span class="hljs-keyword">const</span> foo = <span class="hljs-string">"world"</span>;
+<span class="hljs-keyword">const</span> str = <span class="hljs-string">`<span class="hljs-subst">${bar}</span>, <span class="hljs-subst">${foo}</span>!`</span>; <span class="hljs-comment">// hello, world!</span></code></pre>
+<p><code>${}</code>帶來了簡單的方式讓我們可以任意塞變數進去，另外也可以輕易地辦到多行的 string。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-keyword">var</span> multiline = <span class="hljs-string">"bar foo foo \
+bar bar foo"</span>;
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">const</span> multiline = <span class="hljs-string">`bar foo foo
+bar bar foo`</span>;</code></pre>
+<p>這些功能在處理 url 的 get 等等的情況下特別好用，但在一般情況下沒有變數或是多行的需求時是可以用一般的方式的。</p>
+<h3 id="default"><a href="#default" class="phenomic-HeadingAnchor">#</a>Default</h3>
+<p>原本 js 的 function 不支援 default value，所以常常必須在 function 裡面做類似下面的處理，但有了 default 後就可以直接指定預設的值。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-keyword">var</span> bar = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">foo</span>) </span>{
+    foo = foo || <span class="hljs-string">"hello"</span>; <span class="hljs-comment">// 注意，這是不夠嚴謹的作法</span>
+    <span class="hljs-keyword">return</span> foo;
+};
+
+<span class="hljs-built_in">console</span>.log(bar()); <span class="hljs-comment">// hello</span>
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">const</span> bar = <span class="hljs-function">(<span class="hljs-params">foo = <span class="hljs-string">"hello"</span></span>) =></span> {
+    <span class="hljs-keyword">return</span> foo;
+};
+
+<span class="hljs-built_in">console</span>.log(bar()); <span class="hljs-comment">// hello</span></code></pre>
+<p>原本要寫出正確的 code 常常會寫得很長，而且如果又有很多個變數時更是痛苦，有了 default value 後就方便許多啦！</p>
+<h3 id="spread--rest"><a href="#spread--rest" class="phenomic-HeadingAnchor">#</a>Spread &#x26; Rest</h3>
+<p>這可能是對一般人來說最神奇的一個新功能，不過實在是非常的好用呀～廢話不多說直接看範例比較好懂。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> foo = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+
+<span class="hljs-keyword">const</span> bar = [...foo, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
+
+<span class="hljs-built_in">console</span>.log(bar); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span></code></pre>
+<p>簡單來說可以想成它把 Array 拆開成一個一個個別的值放進另一個 Array 裡面，然後會自然的很完美的 fit 進去，太神奇了神奇到我都不太會解釋了 XD，多多使用就會習慣了啦～</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// 可以隨意放在任何位置</span>
+<span class="hljs-keyword">const</span> foo = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">const</span> bar = [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
+<span class="hljs-built_in">console</span>.log( [...foo, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, ...bar] ); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span>
+
+<span class="hljs-comment">// better Array.push()</span>
+<span class="hljs-keyword">const</span> foo = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+<span class="hljs-keyword">const</span> bar = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+bar.push(...foo);
+<span class="hljs-built_in">console</span>.log(bar); <span class="hljs-comment">// [1, 2, 3, 4]</span></code></pre>
+<p>除了 Array 以外 Object 也是可以使用的，這樣的用法在需要覆蓋原本的 Object 值時非常常用，在 <strong>Redux</strong> 官方中也是推薦這種作法。<strong>不過要在 Object 中使用需要使用 <code>babel-preset-stage-2</code> 的 preset。</strong></p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> foo = {
+    <span class="hljs-string">"key1"</span>: <span class="hljs-string">"value1"</span>,
+    <span class="hljs-string">"key2"</span>: <span class="hljs-string">"value2"</span>
+};
+
+<span class="hljs-keyword">const</span> bar = {
+    ...foo,
+    <span class="hljs-string">"key2"</span>: <span class="hljs-string">"new value"</span>,
+    <span class="hljs-string">"key3"</span>: <span class="hljs-string">"value3"</span>
+};
+
+<span class="hljs-built_in">console</span>.log(bar); <span class="hljs-comment">// { key1: 'value1', key2: 'new value', key3: 'value3' }</span></code></pre>
+<p>在 Object 中使用時放置的時機很重要，<strong>放在後面的會覆蓋掉前面存在過的 key</strong>。</p>
+<p>這樣的功能也同樣可以使用在 function 的 arguments 內，而這就是 <strong>Rest</strong>，而這只可以使用在 Array 上。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> foo = <span class="hljs-function">(<span class="hljs-params">...bar</span>) =></span> {
+    <span class="hljs-keyword">return</span> bar.length;
+};
+
+<span class="hljs-built_in">console</span>.log(foo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// 3</span></code></pre>
+<p>很神奇地把一個一個分開的 argument 轉成一個 Array 丟給 function 了！如果覺得這東西會太神奇的話就慢慢習慣吧哈哈～不過這已經在許多程式語言中是相當常見的語法了。</p>
+<h3 id="destructuring"><a href="#destructuring" class="phenomic-HeadingAnchor">#</a>Destructuring</h3>
+<p><em>解構</em> 是一個特殊的語法可以讓你把一個 Array 或 Object 中的值提取出來另存在一個變數裡，這在 <strong>React</strong> 的拿取 <code>props</code> 的過程中也是非常常見的用法。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> [bar, foo] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-built_in">console</span>.log(bar, foo); <span class="hljs-comment">// 1, 2</span>
+
+<span class="hljs-keyword">const</span> { bar, foo } = { <span class="hljs-attr">bar</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">foo</span>: <span class="hljs-number">2</span> };
+<span class="hljs-built_in">console</span>.log(bar, foo); <span class="hljs-comment">// 1, 2</span></code></pre>
+<p>另外也可以使用在 function 的 arguments 中。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> bar = <span class="hljs-function">(<span class="hljs-params">{ foo }</span>) =></span> {
+    <span class="hljs-keyword">return</span> foo;
+};
+
+<span class="hljs-built_in">console</span>.log( bar({ <span class="hljs-attr">foo</span>: <span class="hljs-number">1</span> }) ); <span class="hljs-comment">// 1</span></code></pre>
+<p>搭配 <strong>Default</strong> 可以有更好的寫法。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> bar = <span class="hljs-function">(<span class="hljs-params">{ foo, key = <span class="hljs-number">2</span> }</span>) =></span> {
+    <span class="hljs-keyword">return</span> foo + key;
+};
+
+<span class="hljs-built_in">console</span>.log( bar({ <span class="hljs-attr">foo</span>: <span class="hljs-number">1</span> }) ); <span class="hljs-comment">// 3</span></code></pre>
+<h3 id="enhanced-object-literals"><a href="#enhanced-object-literals" class="phenomic-HeadingAnchor">#</a>Enhanced Object Literals</h3>
+<p>在創建 Object 的時候有了更好的方法。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> foo = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">const</span> bar = {
+    foo,
+    sayHi() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hi"</span>);
+    },
+    [<span class="hljs-string">`item<span class="hljs-subst">${foo}</span>`</span>]: <span class="hljs-string">`value<span class="hljs-subst">${foo}</span>`</span>
+};
+
+<span class="hljs-built_in">console</span>.log(bar); <span class="hljs-comment">// { foo: 1, sayHi: [Function: sayHi], item1: 'value1' }</span>
+bar.sayHi(); <span class="hljs-comment">// Hi</span></code></pre>
+<p>其中 <code>foo</code> 就是 <code>foo: foo</code> 的縮寫，這在使用 Object 時也是很常用的小技巧 (<em>有仔細注意的話會發現上面 Destructuring 的例子就是這個技巧的延伸</em>)。</p>
+<h3 id="class"><a href="#class" class="phenomic-HeadingAnchor">#</a>Class</h3>
+<p>相信如果有接觸過其他的程式語言的話就會知道 Class 是什麼東西，今天 js 終於也有了它啦～痛哭流涕～。包含了基本的 constructor 和繼承的使用，這裡就不贅述，如果不懂 Class 是什麼的話找一個比較詳細的教學文來看會比較好哦～</p>
+<pre><code class="hljs language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> </span>{
+    <span class="hljs-keyword">constructor</span>(color) {
+        <span class="hljs-keyword">this</span>.type = <span class="hljs-string">"car"</span>;
+        <span class="hljs-keyword">this</span>.color = color;
+    }
+
+    drive() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`GO! My <span class="hljs-subst">${<span class="hljs-keyword">this</span>.color}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.type}</span>!`</span>);
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Taxi</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span> </span>{
+    <span class="hljs-keyword">constructor</span>(color) {
+        <span class="hljs-keyword">super</span>(color);
+        <span class="hljs-keyword">this</span>.type = <span class="hljs-string">"taxi"</span>;
+    }
+}
+
+<span class="hljs-keyword">const</span> taxi = <span class="hljs-keyword">new</span> Taxi(<span class="hljs-string">"yellow"</span>);
+taxi.drive(); <span class="hljs-comment">// GO! My yellow taxi!</span></code></pre>
+<h3 id="promise"><a href="#promise" class="phenomic-HeadingAnchor">#</a>Promise</h3>
+<p>關於 <strong>Promise</strong> 的介紹我已經在先前有寫過一篇簡單的<a href="https://kevin940726.github.io/blog/2016/03/22/I-Promise-you-it-s-going-to-be-great/">介紹文</a>了，歡迎前往觀看～</p>
+<h3 id="module-importexport"><a href="#module-importexport" class="phenomic-HeadingAnchor">#</a>Module import/export</h3>
+<p>相信如果熟悉 Node.js 的環境的人都知道 <code>require()</code> 是什麼東西，如今在 bundler 的幫助下整個 js 的生態圈都已經 modulize 化了，除了後端，連前端都可以使用 <code>require()</code> 了，不過還是有許多不方便之處，而 es6 的 <code>import</code> 和 <code>export</code> 就是這個問題的很好的解決方案。</p>
+<p>首先是 module export 的寫法。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// module.js</span>
+<span class="hljs-comment">// es5</span>
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">foo</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"bar"</span>;
+    }
+};
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    foo() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"bar"</span>;
+    }
+};</code></pre>
+<p>在 import 時。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// es5</span>
+<span class="hljs-keyword">var</span> Module = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./module.js'</span>);
+<span class="hljs-built_in">console</span>.log( Module.foo() ); <span class="hljs-comment">// bar</span>
+
+<span class="hljs-comment">// es6</span>
+<span class="hljs-keyword">import</span> Module <span class="hljs-keyword">from</span> <span class="hljs-string">'./module'</span>;
+<span class="hljs-built_in">console</span>.log( Module.foo() ); <span class="hljs-comment">// bar</span>
+
+<span class="hljs-comment">// or</span>
+<span class="hljs-keyword">import</span> { foo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./module'</span>;
+<span class="hljs-built_in">console</span>.log( foo() ); <span class="hljs-comment">// bar</span></code></pre>
+<p>以上是一些基本的用法，不過還有很多在原本的 module 下比較難處理的用法。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// export</span>
+<span class="hljs-keyword">export</span> { name1, name2 };
+<span class="hljs-keyword">export</span> { variable1 <span class="hljs-keyword">as</span> name1, variable2 <span class="hljs-keyword">as</span> name2 };
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> name1 = foo, name2 = bar;</code></pre>
+<p><code>export default</code> 會讓其他檔案在 <code>import</code> 時指定預設的變數或 function。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> name1;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">const</span> name1 = foo;</code></pre>
+<p>import 時預設會將 <code>export default</code> 的值 import 進來，如果只想要 import 其中的某些值或 method，使用類似 Destructuring 的語法會讓你的 code 更有系統和結構化，聰明的 bundler 會只幫你把需要的東西 import，省去不少空間和載入速度。用 <code>as</code> 來替引入的 module 改名。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// import</span>
+<span class="hljs-keyword">import</span> name1 <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>;
+<span class="hljs-keyword">import</span> { name1, name2 } <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>;
+<span class="hljs-keyword">import</span> { variable1 <span class="hljs-keyword">as</span> name1, variable2 <span class="hljs-keyword">as</span> name2 } <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>;
+<span class="hljs-keyword">import</span> name1, { name2 } <span class="hljs-keyword">from</span> <span class="hljs-string">'module'</span>;</code></pre>
+<p>使用 module 的 <code>import</code>/<code>export</code> 短短篇幅可能沒辦法解釋得非常清楚，有使用過的 Node.js 環境或接觸過其他類似語言(如 Python)的人可能比較能夠理解，詳細還是要自己常常使用才會比較清楚整體架構，不過這除了是使用 bundler 的核心價值以外，也有在開發上可以很有系統的做 code splitting 的優點，更好的除錯和大型專案 scale up 時帶來更清楚的架構，不管前後端都已經是不可或缺的一種開發模式了。</p>
+<h3 id="others"><a href="#others" class="phenomic-HeadingAnchor">#</a>Others</h3>
+<p><strong>ES6</strong> 還有很多很好用的新功能，這裡只簡單介紹幾個我個人比較常用的，還有其他包括 <code>for...of</code>、<code>Map</code>、<code>Set</code>等非常好用的新功能，詳細可以看強者大大的<a href="https://github.com/lukehoban/es6features#readme">整理</a>。</p>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>雖然瀏覽器還沒有全數支援所有的新功能，但是使用新的且穩定的功能在新的專案上已經是必然的趨勢，中大型專案如 <a href="https://github.com/reactjs/redux">Redux</a> 和 facebook 的 <a href="https://github.com/facebook/draft-js">draft.js</a> 都是直接使用 babel 撰寫的，所以不要因為好像要做一些特別的設定才能開始就排斥它，認為是一些邪門歪道 (XD)，趕緊跟上潮流才能當最強訓練家啊～不過當然也不建議直接開始使用 ES7 一些還在 stage 階段的功能 (如 async/await 等)，除了相對不穩定以外，未來也很有可能會更改，使用已經確定或是在社群中已經廣為使用的功能吧！</p>
+]]></description><link>https://kevin940726.github.io/posts/Holy-Babel-Praise-the-ES6-Harmony/</link><guid isPermaLink="true">https://kevin940726.github.io/posts/Holy-Babel-Praise-the-ES6-Harmony/</guid><pubDate>Thu, 24 Mar 2016 16:04:28 GMT</pubDate></item><item><title><![CDATA[I Promise you, it's going to be great!]]></title><description><![CDATA[<p><strong>Promise</strong> 是一個 ES6 JavaScript 中的新功能，雖然瀏覽器尚未全部支援，但其實早在很久以前就已經被非常多人使用，除了知名的 <a href="http://bluebirdjs.com/docs/getting-started.html">bluebird</a> 套件以外，早在 jQuery 時就已經有人使用了，這篇文章會小小介紹 Promise 在 js 中的應用以及它解決的問題。</p>
+<h2 id="prerequirement"><a href="#prerequirement" class="phenomic-HeadingAnchor">#</a>Prerequirement</h2>
+<ul>
+<li>基本 JavaScript</li>
+<li>callback function 應用</li>
+<li>基本 jQuery 的 ajax get 用法</li>
+</ul>
+<hr>
+<h2 id="problem"><a href="#problem" class="phenomic-HeadingAnchor">#</a>Problem</h2>
+<p>相信稍微有寫過幾次 js 的人都知道 js 是一個 asynchronous 的語言，意味著在處理需要等待時間的程式碼時是非同步的，各個 function 在過程中彼此獨立，誰也不等待誰。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">make2</span>(<span class="hljs-params">x</span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        x = <span class="hljs-number">2</span>;
+    }, <span class="hljs-number">1000</span>);
+
+    <span class="hljs-keyword">return</span> x;
+}
+
+<span class="hljs-built_in">console</span>.log(make2(x)); <span class="hljs-comment">// 1</span></code></pre>
+<p>那我們要怎麼知道某個事件處理完了再換人執行呢？在以往我們一般都是用 <code>callback</code> function 來幫我們處理這件事，以上面的例子為例，我們可以改寫成這樣：</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">make2</span>(<span class="hljs-params">x, callback</span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        x = <span class="hljs-number">2</span>;
+        callback(x);
+    }, <span class="hljs-number">1000</span>);
+}
+
+make2(x, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 2</span>
+});</code></pre>
+<p>把需要回傳的值放在最後的 callback function 中引用就可以得到預期的結果了，以上都是很簡單很基本的處理方式，事實上其實也是非常完整的解決方案，一般幾乎所有的需求都可以靠 callback 解決，那我們為什麼還需要學 Promise 呢？</p>
+<p>假如我們今天要去爬某個相簿網站的 api，要先拿出最近一本相簿的 <code>album_id</code> ，再用相簿的 <code>album_id</code> 拿出該相簿的第一張相片，假設該網站有一個 api 可以拿出相簿的 <code>album_id</code>，另外一個 api 可以透過傳入的 <code>album_id</code> 拿到第一張相片的 <code>photo_id</code>，那我們可以這樣寫。</p>
+<pre><code class="hljs language-js">$.get(GET_LATEST_ALBUM_API, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album_id</span>) </span>{
+    $.get(GET_FIRST_PHOTO_API + album_id, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">photo_id</span>) </span>{
+        <span class="hljs-comment">// the first photo in the latest album</span>
+    });
+});</code></pre>
+<p>嗯⋯⋯看起來沒什麼問題呀？那⋯⋯如果我們現在想要拿該相片的拍攝者，還有那個人的名字，還有他的大頭貼，又這個網站對於所有的需求都獨立開另外一個 api ，而且還是一層一層的疊下去的。意思是我要得到相片的 <code>photo_id</code> 才可以得到拍攝者的 <code>user_id</code>，要得到拍攝者的 <code>user_id</code> 才可以得到他的名字，而又要有名字才可以得到他的大頭貼⋯⋯，先不討論什麼奇怪的 api 會這樣設計，那我們可能也會覺得說：「那又怎樣？我會寫啊！」，於是⋯⋯</p>
+<pre><code class="hljs language-js">$.get(GET_LATEST_ALBUM_API, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album_id</span>) </span>{
+    $.get(GET_FIRST_PHOTO_API + album_id, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">photo_id</span>) </span>{
+        $.get(GET_AUTHOR_API + photo_id, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user_id</span>) </span>{
+            $.get(GET_USER_NAME_API + user_id, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user_name</span>) </span>{
+                $.get(GET_USER_PHOTO_API + user_name, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user_photo</span>) </span>{
+                    <span class="hljs-comment">// FINALLY!</span>
+                });
+            });
+        });
+    });
+});</code></pre>
+<p>天啊怎麼一層一層疊下去啊，好像不在寫 code，在玩疊疊樂了，如果要做的判斷和處理更多，或是又要再往下去呼叫 api 時光是看到 code 就快暈倒了吧！而這就是惡名昭彰的 <strong>callback hell</strong>，顧名思義就是一個天殺的地獄，所有人在寫 callback 時最討厭遇到這樣的問題了吧！</p>
+<p>這個時候救世主 <strong>Promise</strong> 老大哥就出來跟小弟 callback 說：「欸欸小子，吃不消了吧？讓我來救救你吧！」，於是 callback 就哭著跑去抱住 Promise 然後一邊擦淚一邊責怪你的 code 寫得不好讓它進入地獄了。</p>
+<h2 id="introducing-promise"><a href="#introducing-promise" class="phenomic-HeadingAnchor">#</a>Introducing Promise</h2>
+<p>Promise 是什麼呢？我們知道了它要解決的問題可是還是對它完全不了解，其實 Promise 直翻就是<strong>保證</strong>，記住這個原則，<strong>它就是用來保證事件一定會完成的方法</strong>。還是不懂嗎？讓我們用 Promise 重新寫一次上面的例子。</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// jQuery 的 get method 可以無痛轉換成 Promise 寫法</span>
+
+$.get(GET_LATEST_ALBUM_API)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album_id</span>) </span>{
+        <span class="hljs-keyword">return</span> $.get(GET_FIRST_PHOTO_API + album_id);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">photo_id</span>) </span>{
+        <span class="hljs-keyword">return</span> $.get(GET_AUTHOR_API + photo_id);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user_id</span>) </span>{
+        <span class="hljs-keyword">return</span> $.get(GET_USER_NAME_API + user_id);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user_name</span>) </span>{
+        <span class="hljs-keyword">return</span> $.get(GET_USER_PHOTO_API + user_name);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user_photo</span>) </span>{
+        <span class="hljs-comment">// WE DID IT!</span>
+    });</code></pre>
+<p>天啊傑克～這真是太神奇啦～～～，<strong>Promise</strong> 的<strong>保證</strong>真的很有信用耶！比所有台灣的政客都還要值得信賴呢！</p>
+<p>看完了基本的 Promise 應用，讓我們再回來看看 Promise 背後的原理和用法。</p>
+<p>Promise 是一個 object，在創造一個新的 Promise 時他吃一個 function，而這個 function 各吃兩個 function，第一個是 Promise 完成時的 callback，第二個則是失敗(拒絕)時的 callback。</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">var</span> myPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            x = <span class="hljs-number">2</span>;
+            resolve(x);
+        }, <span class="hljs-number">1000</span>);
+    }
+);</code></pre>
+<p>新建完的 Promise 就會有兩個 method 可以使用，一個是 <code>then()</code> 代表 Promise 成功時執行的 callback，第二個是 <code>catch()</code> 代表失敗時的 callback。</p>
+<p>而 <code>then()</code> function也可以吃兩個 callback 參數，第一個是成功時的，第二個也自然是失敗的。</p>
+<pre><code class="hljs language-js">myPromise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 2</span>
+}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// rejected</span>
+});</code></pre>
+<p>在 <code>then()</code> function 中也是可以回傳值的，你可以回傳一個簡單的值或是回傳另一個 Promise，而回傳後的值可以一直 chain 連鎖下去，一直 then then then⋯⋯直到最後。</p>
+<pre><code class="hljs language-js">myPromise
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+        <span class="hljs-keyword">return</span> x + <span class="hljs-number">1</span>; <span class="hljs-comment">// return simple value</span>
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+        <span class="hljs-keyword">return</span> anotherPromise(x); <span class="hljs-comment">// return another Promise</span>
+    })
+    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+        <span class="hljs-comment">// catch error at the end, any error happened above will be rejected into here.</span>
+    });</code></pre>
+<p>就這樣簡單的一些 method 就可以開始自己新建一個 Promise 了，運用一些 higher-order function 的技巧可以建立可重複使用的 Promise function，例如我們練習把原本 jQuery 的 get callback function 改寫成 Promise 的方法。</p>
+<pre><code class="hljs language-js">$.prototype.getPromise = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">url</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(
+        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+            $.get(url, resolve);
+        }
+    );
+};
+
+$.getPromise(url)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(response);
+    })
+    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reason</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(reason);
+    });</code></pre>
+<p>不過其實鮮少會有機會需要自己建立這樣的 Promise function，大部分都直接使用現成的套件，包括 jQuery 和 bluebird 以外，原生的瀏覽器也有部分支援了 Promise 的基本用法，若是要向下支援的話我推薦直接使用跨瀏覽器的 <a href="https://github.com/taylorhakes/promise-polyfill">polyfill</a>，假如不需要使用一些特殊的功能的話，輕量的 polyfill 就已經很夠用了，若只是內部使用或是只是在測試的話在 modern browser 上都已經支援了，直接使用就可以了。</p>
+<h2 id="more-examples"><a href="#more-examples" class="phenomic-HeadingAnchor">#</a>More Examples</h2>
+<p>基本上 Promise 的使用方式真的很簡單，沒有太多神奇的用法，照著上面的一些範例就可以處理大部分的問題了，不過有時候還是會有一些情況是需要多依靠一些方法的。</p>
+<p>假如我們把上面拿相簿 api 的例子改變一下，這次我們不拿最近一本相簿的第一張相片了，我們要拿全部的相簿以及他們各自的全部的相片，這次我也不只拿拍攝者一個人了，我要拿的是所有按這張相片喜歡的所有人，以及他們各自所有的名字和大頭貼，一般直覺上我們可能一開始會這麼寫。</p>
+<pre><code class="hljs language-js">$.get(GET_ALL_ALBUM_API)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">albums</span>) </span>{
+        albums.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album_id</span>) </span>{
+            $.get(GET_ALL_PHOTO_API + album_id)
+                .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">photos</span>) </span>{
+                    photos.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">photo_id</span>) </span>{
+                        <span class="hljs-comment">// ...</span>
+                        <span class="hljs-comment">// you get the point...</span>
+                    });
+                });
+        });
+    });</code></pre>
+<p>這個簡單的例子可以發現一般 Promise 在處理 list 的時候還是不太順暢的，一旦出現了 list 就破壞了原本
+chain 的結構，寫出來的 code 就跟他的小弟 callback hell 一樣了。</p>
+<p>那是不是就代表這種情況 Promise 也無用武之地？當然不是囉～不然這篇就不會是在介紹 Promise 了，不是說過我<strong>保證</strong>會做好做滿的嗎？其實解決方法很簡單，我們不一個一個<strong>保證</strong>單一個政策了，我們<strong>全部保證</strong>做到，絕對不跳票！超級P來拯救咧～</p>
+<h3 id="promiseall"><a href="#promiseall" class="phenomic-HeadingAnchor">#</a>Promise.all()</h3>
+<pre><code class="hljs language-js">$.get(GET_ALL_ALBUM_API)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">albums</span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.all(albums.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album.id</span>) </span>{
+            <span class="hljs-keyword">return</span> $.get(GET_ALL_PHOTO_API + album_id);
+        }));
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">photos</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(photos);
+        <span class="hljs-comment">// [</span>
+        <span class="hljs-comment">//     [album1_photo1, album1_photo2, ...],</span>
+        <span class="hljs-comment">//     [album2_photo1, album2_photo2, ...],</span>
+        <span class="hljs-comment">//     ...</span>
+        <span class="hljs-comment">// ]</span>
+    });</code></pre>
+<p><code>Promise.all()</code> 吃一個 array 當作參數，array 中的每個值都是 Promise，形成一個 list of Promise 的概念，最後也會確保每個 Promise 都完成了以後才進入 <code>then()</code> function，以上面的例子來說我先將各個 <code>album_id</code> 代入 Promise function 透過 <code>map()</code> 得到一個 Promise 的 Array，將它們餵給 <code>Promise.all()</code> 後就會得到一個大的
+Promise 大哥大，在最後 <code>return</code> 它後就可以繼續利用 <code>then()</code> chain 下去了，之後的做法也都依此類推，最後就可以拿到一個非常大的 Array 裡面包含了所有的相簿、所有的相片、所有的按喜歡的人以及他們各自的名字和大頭貼了。</p>
+<hr>
+<p>Promise 是不是很簡單又很方便呀～在下一個專案上練習使用看看吧！</p>
+]]></description><link>https://kevin940726.github.io/posts/I-Promise-you-it-s-going-to-be-great/</link><guid isPermaLink="true">https://kevin940726.github.io/posts/I-Promise-you-it-s-going-to-be-great/</guid><pubDate>Tue, 22 Mar 2016 14:15:05 GMT</pubDate></item></channel></rss>
